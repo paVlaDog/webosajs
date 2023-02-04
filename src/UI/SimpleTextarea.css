@@ -1,0 +1,12 @@
+.simple-textarea {
+    width: calc(100% - 10px);
+    height: 400px;
+    padding: 2px 5px;
+    margin: 5px 5px;
+    border: 1px solid goldenrod;
+    border-radius: 5px;
+    text-align: start;
+    background-color: peachpuff;
+    color: darkred;
+    font-weight: bold;
+}

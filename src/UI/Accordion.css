@@ -1,0 +1,26 @@
+.accordion-item {
+    border: 3px solid goldenrod;
+    border-radius: 5px;
+    margin: 3px;
+    /*background-color: goldenrod;*/
+}
+
+.accordion-title {
+    padding: 0 1rem 0 3px;
+    background-color: goldenrod;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: larger;
+    color: var(--back-color-3);
+}
+
+.accordion-content {
+    padding: 0 2px;
+}
+
+.left-sign {
+    font-weight: bold;
+    font-size: larger;
+    margin-left: 10px;
+}

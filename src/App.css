@@ -1,0 +1,104 @@
+:root {
+  --back-color-1: tan;
+  --back-color-2: indianred;
+  --back-color-3: peachpuff;
+  --border-color-1: goldenrod;
+  --text-color-1: darkred;
+  background-color: bisque;
+  /*background-color: peachpuff;*/
+}
+
+html {
+  padding: 1rem;
+  min-width: 600px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+input::placeholder {
+  color: goldenrod;
+}
+
+textarea::placeholder {
+  color: goldenrod;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+.htmlHeader {
+  position: relative;
+}
+
+.htmlHeader {
+  height: 3rem;
+  background-color: var(--border-color-1);
+}
+
+.htmlHeader nav {
+  padding: 0.5rem 0.5rem;
+  font-size: larger;
+}
+
+.htmlHeader nav * {
+  display: inline-flex;
+  margin: 0 1rem;
+  color: var(--back-color-3);
+}
+
+.middle {
+  margin-top: 1rem;
+  overflow: auto;
+}
+
+main {
+  margin-right: 21rem;
+}
+
+.middle main nav {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.middle main nav h4 {
+  margin: 0;
+  cursor: pointer;
+}
+
+.middle main nav .active {
+  border-bottom: 2px solid var(--back-color-2);
+}
+
+.middle main .main-information-block {
+  margin: 0.5rem;
+  border: 3px solid var(--border-color-1);
+  border-radius: 5px;
+}
+
+footer {
+  text-align: center;
+  margin: 2rem;
+}
+
+.stats-with-field {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+.drop-value-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.drop-value-input input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.drop-value-input button {
+    margin: 5px 0 5px 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.drop-value-input .button-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid goldenrod;
+    position: absolute;
+    background-color: goldenrod;
+    margin-top: 25px;
+    margin-left: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.drop-value-input .button-list button {
+    margin: 0;
+}

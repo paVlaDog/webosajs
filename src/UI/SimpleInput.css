@@ -1,0 +1,10 @@
+.simple-input input {
+    margin: 5px 0;
+    padding: 2px 5px;
+    background-color: peachpuff;
+    background-clip: padding-box;
+    border: 1px solid goldenrod;
+    border-radius: 0.25rem;
+    color: goldenrod;
+    text-align: center;
+}

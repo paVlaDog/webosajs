@@ -1,0 +1,46 @@
+aside {
+    /*margin-left: auto;*/
+    float: right;
+    width: 20rem;
+    /*position: fixed;*/
+}
+
+.middle aside .aside-information-block {
+    /*width: 80%;*/
+    text-align: center;
+    margin: 0.5rem;
+    border: 3px solid var(--border-color-1);
+    border-radius: 5px;
+}
+
+.char-name {
+    background-color: var(--border-color-1);
+    height: 40px;
+    align-self: center;
+    display: flex;
+    color: var(--back-color-1);
+}
+
+.char-name .simple-input input{
+    align-self: center;
+    width: 13rem;
+    border: 3px solid var(--border-color-1);
+    border-radius: 5px;
+    font-size: larger;
+    font-weight: bold;
+    background-color: var(--back-color-3);
+}
+
+aside .char-name p {
+    font-size: x-large;
+    font-weight: bold;
+    padding: 0 0.3rem;
+    color: var(--back-color-3);
+    margin-top: 0.0rem;
+}
+
+.save-load-reset-block {
+    width: calc(19rem - 6px);
+    border-top: 1px solid goldenrod;
+}
+

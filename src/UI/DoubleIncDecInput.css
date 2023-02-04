@@ -1,0 +1,24 @@
+.inc-dec-input input {
+    width: 40px;
+    border: 1px solid goldenrod;
+    border-radius: 0;
+    color: goldenrod;
+    text-align: center;
+}
+
+.inc-dec-input {
+    display: flex;
+    align-items: center;
+}
+
+.inc-dec-input .left-button {
+    margin: 5px 0 5px 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.inc-dec-input .right-button {
+    margin: 5px 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
