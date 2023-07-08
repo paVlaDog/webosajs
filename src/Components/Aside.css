@@ -1,16 +1,15 @@
-aside {
-    /*margin-left: auto;*/
-    float: right;
+.middle .middle-aside {
     width: 20rem;
-    /*position: fixed;*/
 }
 
-.middle aside .aside-information-block {
+.middle .middle-aside .aside-information-block {
     /*width: 80%;*/
     text-align: center;
     margin: 0.5rem;
     border: 3px solid var(--border-color-1);
     border-radius: 5px;
+    position: sticky;
+    top: 0;
 }
 
 .char-name {
@@ -31,7 +30,7 @@ aside {
     background-color: var(--back-color-3);
 }
 
-aside .char-name p {
+.middle-aside .char-name p {
     font-size: x-large;
     font-weight: bold;
     padding: 0 0.3rem;

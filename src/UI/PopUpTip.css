@@ -1,0 +1,22 @@
+.tooltip {
+    position: absolute;
+    /*width: 180px;*/
+    /*border: 5px solid black;*/
+    /*margin: 20px;*/
+    /*padding: 4px 12px;*/
+    /*margin-left: calc(100%);*/
+    justify-content: center;
+    color: var(--text-color-2);
+    background-color: var(--border-color-1);
+    border-radius: 12px ;
+    text-align: center;
+    white-space: pre-line;
+    /*font-weight: 400;*/
+    /*pointer-events: none;*/
+}
+
+.tooltiptext {
+    border-radius: 12px;
+    /*margin: 20px;*/
+    padding: 4px 12px;
+}

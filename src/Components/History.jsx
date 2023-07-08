@@ -1,7 +1,7 @@
 import React from 'react';
 import SimpleTextarea from "../UI/SimpleTextarea";
 
-const History = ({charList}) => {
+const History = ({charList, evalList}) => {
     return (
         <div>
             <div className={"big-bold-red-text"}>Аспекты:</div>

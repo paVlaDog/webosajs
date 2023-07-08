@@ -4,6 +4,7 @@
   --back-color-3: peachpuff;
   --border-color-1: goldenrod;
   --text-color-1: darkred;
+  --text-color-2: white;
   background-color: bisque;
   /*background-color: peachpuff;*/
 }
@@ -37,9 +38,6 @@ textarea::placeholder {
 
 .htmlHeader {
   position: relative;
-}
-
-.htmlHeader {
   height: 3rem;
   background-color: var(--border-color-1);
 }
@@ -57,29 +55,29 @@ textarea::placeholder {
 
 .middle {
   margin-top: 1rem;
-  overflow: auto;
+  display: flex;
 }
 
-main {
-  margin-right: 21rem;
+.middle .main-main {
+  width: 100%;
 }
 
-.middle main nav {
+.middle .main-main nav {
   margin: 0.5rem 0;
   display: flex;
   justify-content: space-around;
 }
 
-.middle main nav h4 {
+.middle .main-main nav h4 {
   margin: 0;
   cursor: pointer;
 }
 
-.middle main nav .active {
+.middle .main-main nav .active {
   border-bottom: 2px solid var(--back-color-2);
 }
 
-.middle main .main-information-block {
+.middle .main-main .main-information-block {
   margin: 0.5rem;
   border: 3px solid var(--border-color-1);
   border-radius: 5px;
@@ -95,6 +93,11 @@ footer {
   align-items: center;
 }
 
+.htmlHeader nav h3 a {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
 
 
 

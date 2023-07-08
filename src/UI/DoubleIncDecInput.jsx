@@ -7,7 +7,7 @@ const DoubleIncDecInput = ({changeVal, noChangeVal, setVal, decFunc = () => setV
     return (
         <div className={"inc-dec-input"}>
             <SimpleButton onClick={() => {decFunc()}} className={"left-button"} type={"button"}>-</SimpleButton>
-                <SimpleInput val={noChangeVal} setVal={() => {}} {...props}></SimpleInput>
+                <SimpleInput disabled={true} val={noChangeVal} setVal={() => {}} {...props}></SimpleInput>
                 <SimpleInput val={changeVal} setVal={setVal}></SimpleInput>
             <SimpleButton onClick={() => {incFunc()}} className={"right-button"} type={"button"}>+</SimpleButton>
         </div>
