@@ -6,6 +6,8 @@ import IncDecInput from "../UI/IncDecInput";
 import StatsWithDoubleIncDecInput from "../UI/StatsWithDoubleIncDecInput";
 import "./Equip.css"
 import PopUpTip from "../UI/PopUpTip";
+import HeaderWithTipBlock from "./HeaderWithTipBlock";
+import ButtonUnionTips from "../UI/ButtonUnionTips";
 
 const weaponsModifiers = "* Парное - Вы тратите 1 действие на атаку вместо 2.\n" +
     "* Простое - Простым считается оружие, не являющееся парным или двуручным.\n" +
@@ -284,11 +286,11 @@ const namesMas = [
     namesOther
 ]
 
-const tipCapacity = "- Ваш показатель грузоподъёмности - 3 + СИЛ.\n" +
-    "- При подсчёте грузоподъёмности учитываются только тяжёлые вещи. Все маленькие вещи считаются лишь в группе.\n" +
-    "- 1/2 грузоподъёмности это - парное оружие, 40 стрел, 20 болтов, множество мелких вещей\n" +
-    "- 1 грузоподъёмности - простое и двуручное оружие, лёгкие и средние доспехи\n" +
-    "- 2 грузоподъёмности - тяжёлые доспехи"
+// const tipCapacity = "- Ваш показатель грузоподъёмности - 3 + СИЛ.\n" +
+//     "- При подсчёте грузоподъёмности учитываются только тяжёлые вещи. Все маленькие вещи считаются лишь в группе.\n" +
+//     "- 1/2 грузоподъёмности это - парное оружие, 40 стрел, 20 болтов, множество мелких вещей\n" +
+//     "- 1 грузоподъёмности - простое и двуручное оружие, лёгкие и средние доспехи\n" +
+//     "- 2 грузоподъёмности - тяжёлые доспехи"
 
 const mapToSimpleDiv = (str) => {
     return str.split("\n").map((el) => {return <div>{el}</div>})
@@ -345,12 +347,56 @@ const addEquips = (equip, things, setEquip, ) => {
 const Equip = ({charList, evalList}) => {
     const [buyMode, setBuyMode] = useState(false);
 
+    const equipTip =
+        <ButtonUnionTips count={3}
+                         namesArray={["Экипировка", "Закупка", "Грузоподъёмность"]}
+                         tipsArray={
+                             [
+                                 <div>
+                                     <div>
+                                         На этой вкладке хранятся все вещи, которые вы добыли в приключениях или имели со старта.
+                                     </div>
+                                     <div>
+                                         Здесь же учитывается грузоподъёмность, чтобы ваш персонаж не перетрудился при ношении тяжёлых вещей и не надорвал себе спину.
+                                     </div>
+                                     <div>
+                                         Также, здесь можно в удобном формате закупиться стартовыми вещами.
+                                     </div>
+                                 </div>,
+                                 <div>
+                                     <div>
+                                         Нажав на кнопку внизу листа вы активируете режим закупки.
+                                         В нём вы можете купить оружие, доспехи, магические фокусировки и прочие вещи в удобном формате.
+                                     </div>
+                                     <div>
+                                         Сверху отображаются потраченные на данный момент монеты, при нажатии "Окончить закупку" потраченные монеты спишутся с вашего счёта, а вещи добавятся в инвентарь.
+                                         Обратите внимание, что грузоподъёмность никто за вас считать не будет(
+                                     </div>
+                                 </div>,
+                                 <div>
+                                     <div>
+                                         Грузоподъёмность показывает, сколь много снаряжения способен таскать ваш персонажа. Её значение равно 3 + Сила.
+                                     </div>
+                                     <div>
+                                         При подсчёте грузоподъёмности учитываются только тяжёлые вещи. Все маленькие вещи считаются лишь в группе.
+                                     </div>
+                                     <div>
+                                         1/2 грузоподъёмности это - парное оружие, 40 стрел, 20 болтов, множество мелких вещей
+                                     </div>
+                                     <div>
+                                         1 грузоподъёмности - простое и двуручное оружие, лёгкие и средние доспехи
+                                     </div>
+                                     <div>
+                                         2 грузоподъёмности - тяжёлые доспехи
+                                     </div>
+                                 </div>,
+                             ]
+                         }/>
+
     return (
         <div>
-            <div className={"big-bold-red-text"}>Снаряжение:</div>
-            <PopUpTip text={mapToSimpleDiv(tipCapacity)}>
-                <StatsWithDoubleIncDecInput name={"Грузоподъёмность"} changeVal={charList.addCapacity.value[0]} noChangeVal={evalList.capacity} setVal={charList.addCapacity.setValue(0)}/>
-            </PopUpTip>
+            <HeaderWithTipBlock header={"Снаряжение"} tip={equipTip}/>
+            <StatsWithDoubleIncDecInput name={"Грузоподъёмность"} changeVal={charList.addCapacity.value[0]} noChangeVal={evalList.capacity} setVal={charList.addCapacity.setValue(0)} tipExist={false}/>
             <PopUpTip text={"Потраченную грузоподъёмность считайте сами, ибо функционал не реализован"}>
                 <div className={"stats-with-field"}>
                     <div className={"bold-red-text"}>Занятая грузоподъёмность:</div>
@@ -358,6 +404,7 @@ const Equip = ({charList, evalList}) => {
                 </div>
             </PopUpTip>
 
+            <div className={"bold-red-text"}>Снаряжение:</div>
             <SimpleTextarea
                 value = {charList.equip.value[0]}
                 onChange={(e) => {charList.equip.setValue(0)(e.target.value)}}

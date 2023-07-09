@@ -3,7 +3,10 @@ import "./SimpleTextarea.css"
 
 const MyTextArea = React.forwardRef((props, ref) => {
     return (
-        <textarea ref={ref} className={"simple-textarea"} {...props}/>
+        <div>
+            <textarea ref={ref} className={"simple-textarea"} {...props}/>
+        </div>
+
     );
 });
 

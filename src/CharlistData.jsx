@@ -83,7 +83,8 @@ class CharlistData {
         addCountManeuver: this.createStateArray("addCountManeuver", 1, "0"),
         addMS: this.createStateArray("addMS", 1, "0"),
         maneuvers: this.createStateArray("maneuvers", 1, startManeuvers),
-        ability: this.createStateArray("ability", 1, ""),// loader
+        ability: this.createStateArray("ability", 1, ""),
+        history: this.createStateArray("history", 1, ""),// loader
     }
 
     mageMDRBonus = this.list.mage.value[0] === 0 || this.list.mage.value[0] === "0" ? 0 :
@@ -127,10 +128,10 @@ class CharlistData {
         MSI: this.SICreate(+this.list.boneMane.value[0], (+this.list.addMSI.value[0] + this.mageMDRBonus)),
         KFZ: 5 + +this.list.harks.value[2] + +this.list.addKFZ.value[0],
         KMZ: 5 + +this.list.harks.value[5] + +this.list.addKMZ.value[0],
-        restHitsHeal: (this.ectoMaxHits / 2) + +this.list.addRestHitsHeal.value[0],
-        restManeHeal: (this.ectoMaxMane / 2) + +this.list.addRestManeHeal.value[0],
-        haltHitsHeal: (this.ectoMaxHits / 4) + +this.list.addHaltHitsHeal.value[0],
-        haltManeHeal: (this.ectoMaxMane / 4) + +this.list.addHaltManeHeal.value[0],
+        restHitsHeal: (this.ectoMaxHits / 4) + +this.list.addRestHitsHeal.value[0],
+        restManeHeal: (this.ectoMaxMane / 4) + +this.list.addRestManeHeal.value[0],
+        haltHitsHeal: (this.ectoMaxHits / 8) + +this.list.addHaltHitsHeal.value[0],
+        haltManeHeal: (this.ectoMaxMane / 8) + +this.list.addHaltManeHeal.value[0],
         capacity: 3 + +this.list.harks.value[0] + +this.list.addCapacity.value[0],
         countManeuver: 5 + 2 * +this.list.harks.value[4] + +this.list.addCountManeuver.value[0],
         MS: 6 + +this.list.addMS.value[0]

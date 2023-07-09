@@ -1,10 +1,18 @@
 import React from 'react';
 import DoubleIncDecInput from "./DoubleIncDecInput";
+import PopUpTip from "./PopUpTip";
 
-const StatsWithDoubleIncDecInput = ({name, changeVal, noChangeVal, setVal, ...props} ) => {
+const StatsWithDoubleIncDecInput = ({name, changeVal, noChangeVal, setVal, tipExist=true, tip, ...props} ) => {
     return (
         <div className={"stats-with-field"}>
-            <label className={"bold-red-text"}>{name + ":"}</label>
+            {tipExist &&
+                <PopUpTip text={tip}>
+                    <label className={"bold-red-text"}>{name + ":"}</label>
+                </PopUpTip>}
+
+            {!tipExist &&
+                <label className={"bold-red-text"}>{name + ":"}</label>}
+
             <DoubleIncDecInput changeVal={changeVal} noChangeVal={noChangeVal} setVal={setVal} {...props}/>
         </div>
     );

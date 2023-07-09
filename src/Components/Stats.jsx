@@ -429,43 +429,77 @@ const Stats = ({charList, evalList}) => {
                              ]
                          }/>
 
+    const otherTip =
+        <ButtonUnionTips count={1}
+                         namesArray={["Что это?"]}
+                         tipsArray={
+                             [
+                                 <div>
+                                     <div>
+                                         Здесь располагаются все прочие статы, которые будут важны вам по ходу игры.
+                                         Узнать больше о стате можно, если навести мышку на него.
+                                     </div>
+                                 </div>,
+                             ]
+                         }/>
+
+    const otherStatsArray = [
+            ["Максимум хитов", charList.addMaxHits.value[0], evalList.maxHits, charList.addMaxHits.setValue(0), "Ваше максимальное количество здоровья"],
+            ["Максимум маны", charList.addMaxMane.value[0], evalList.maxMane, charList.addMaxMane.setValue(0), "Ваш максимальный запас маны, которая необходима для использования заклинания"],
+            ["Жизненные силы (ЖСИ)", charList.addGSI.value[0], evalList.GSI, charList.addGSI.setValue(0), "От ЖСИ зависит ваше максимальное кол-во хитов (8 * средней бросок) и восстановление на отдыхе (1 бросок ЖСИ для привала и 2 броска для отдыха)"],
+            ["Магические силы (МСИ)", charList.addMSI.value[0], evalList.MSI, charList.addMSI.setValue(0), "От МСИ зависит ваше максимальное кол-во маны (8 * средней бросок) и восстановление на отдыхе (1 бросок МСИ для привала и 2 броска для отдыха)"],
+            ["Класс физической защиты (КФЗ)", charList.addKFZ.value[0], evalList.KFZ, charList.addKFZ.setValue(0), "КФЗ защищает вас от любой физической атаки. Наносимый вам урон = Значение атаки - КФЗ."],
+            ["Класс магической защиты (КМЗ)", charList.addKMZ.value[0], evalList.KMZ, charList.addKMZ.setValue(0), "КМЗ защищает вас от любой магической атаки. Наносимый вам урон = Значение атаки - КФЗ."],
+            ["Восстановление хитов на отдыхе", charList.addRestHitsHeal.value[0], evalList.restHitsHeal, charList.addRestHitsHeal.setValue(0), "Среднее восстанавливаемое вами значение хитов на отдыхе"],
+            ["Восстановление маны на отдых", charList.addRestManeHeal.value[0], evalList.restManeHeal, charList.addRestManeHeal.setValue(0), "Среднее восстанавливаемое вами значение маны на отдыхе"],
+            ["Восстановление хитов на привале", charList.addHaltHitsHeal.value[0], evalList.haltHitsHeal, charList.addHaltHitsHeal.setValue(0), "Среднее восстанавливаемое вами значение хитов на привале"],
+            ["Восстановление маны на привале", charList.addHaltManeHeal.value[0], evalList.haltManeHeal, charList.addHaltManeHeal.setValue(0), "Среднее восстанавливаемое вами значение маны на привале"],
+            ["Очки манёвров", charList.addCountManeuver.value[0], evalList.countManeuver, charList.addCountManeuver.setValue(0), "Максимальное количество доступных вам манёвров"],
+            ["Скорость передвижения", charList.addMS.value[0], evalList.MS, charList.addMS.setValue(0), "Ваша скорость передвижения (в клетках)"],
+    ]
+
+
     return (
         <div>
-            <HeaderWithTipBlock header={"Характеристики и навыки"} tip={harksTip}/>
+            <div className={"harks"}>
+                <HeaderWithTipBlock header={"Характеристики и навыки"} tip={harksTip}/>
 
-            <div className={"harks-and-naviks-blocks"}>
-                {harksAndNaviksElement}
+                <div className={"harks-and-naviks-blocks"}>
+                    {harksAndNaviksElement}
+                </div>
             </div>
+
             <div className={"vladenia"}>
                 <HeaderWithTipBlock header={"Владения"} tip={vladeniaTip}/>
-                <StatsWithDoubleIncDecInput name={"Очки владений"} changeVal={charList.addVladeniaPoint.value[0]} noChangeVal={evalList.vladeniaPoint} setVal={charList.addVladeniaPoint.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Максимум отложенных владений"} changeVal={charList.addDelayedVladeniaPoint.value[0]} noChangeVal={evalList.delayedVladeniaPoint} setVal={charList.addDelayedVladeniaPoint.setValue(0)}/>
+                <StatsWithDoubleIncDecInput name={"Очки владений"} changeVal={charList.addVladeniaPoint.value[0]} noChangeVal={evalList.vladeniaPoint} setVal={charList.addVladeniaPoint.setValue(0)} tipExist={false}/>
+                <StatsWithDoubleIncDecInput name={"Максимум отложенных владений"} changeVal={charList.addDelayedVladeniaPoint.value[0]} noChangeVal={evalList.delayedVladeniaPoint} setVal={charList.addDelayedVladeniaPoint.setValue(0)} tipExist={false}/>
                 {vladeniaElement}
             </div>
+
             <div className={"other-stats"}>
-                <div className={"big-bold-red-text"}>Прочие характеристики:</div>
+                <HeaderWithTipBlock header={"Прочие статы"} tip={otherTip}/>
                 <div className={"stats-with-field"}>
-                    <label className={"bold-red-text"}>{"Кость хитов" + ":"}</label>
+                    <PopUpTip text={"Кость хитов влияет на ЖСИ. Со старта - 1к6 для всех."}>
+                        <label className={"bold-red-text"}>{"Кость хитов" + ":"}</label>
+                    </PopUpTip>
                     {boneInputCreate(charList.boneHits.value[0], charList.boneHits.setValue(0))}
                 </div>
                 <div className={"stats-with-field"}>
-                    <label className={"bold-red-text"}>{"Кость маны" + ":"}</label>
+                    <PopUpTip text={"Кость маны влияет на МСИ. Со старта - 0, если вы не заклинатель."}>
+                        <label className={"bold-red-text"}>{"Кость маны" + ":"}</label>
+                    </PopUpTip>
                     {boneInputCreate(charList.boneMane.value[0], charList.boneMane.setValue(0))}
                 </div>
-                <StatsWithDoubleIncDecInput name={"Максимум хитов"} changeVal={charList.addMaxHits.value[0]} noChangeVal={evalList.maxHits} setVal={charList.addMaxHits.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Максимум маны"} changeVal={charList.addMaxMane.value[0]} noChangeVal={evalList.maxMane} setVal={charList.addMaxMane.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Жизненные силы (ЖСИ)"} changeVal={charList.addGSI.value[0]} noChangeVal={evalList.GSI} setVal={charList.addGSI.setValue(0)} style={{width: "4rem"}}/>
-                <StatsWithDoubleIncDecInput name={"Магические силы (МСИ)"} changeVal={charList.addMSI.value[0]} noChangeVal={evalList.MSI} setVal={charList.addMSI.setValue(0)} style={{width: "4rem"}}/>
-                <StatsWithDoubleIncDecInput name={"Класс физической защиты (КФЗ)"} changeVal={charList.addKFZ.value[0]} noChangeVal={evalList.KFZ} setVal={charList.addKFZ.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Класс магической защиты (КМЗ)"} changeVal={charList.addKMZ.value[0]} noChangeVal={evalList.KMZ} setVal={charList.addKMZ.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Восстановление хитов на отдыхе"} changeVal={charList.addRestHitsHeal.value[0]} noChangeVal={evalList.restHitsHeal} setVal={charList.addRestHitsHeal.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Восстановление маны на отдыхе"} changeVal={charList.addRestManeHeal.value[0]} noChangeVal={evalList.restManeHeal} setVal={charList.addRestManeHeal.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Восстановление хитов на привале"} changeVal={charList.addHaltHitsHeal.value[0]} noChangeVal={evalList.haltHitsHeal} setVal={charList.addHaltHitsHeal.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Восстановление маны на привале"} changeVal={charList.addHaltManeHeal.value[0]} noChangeVal={evalList.haltManeHeal} setVal={charList.addHaltManeHeal.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Очки манёвров"} changeVal={charList.addCountManeuver.value[0]} noChangeVal={evalList.countManeuver} setVal={charList.addCountManeuver.setValue(0)}/>
-                <StatsWithDoubleIncDecInput name={"Скорость передвижения"} changeVal={charList.addMS.value[0]} noChangeVal={evalList.MS} setVal={charList.addMS.setValue(0)}/>
+
+                {otherStatsArray.map((el) =>
+                    <StatsWithDoubleIncDecInput name={el[0]} changeVal={el[1]} noChangeVal={el[2]} setVal={el[3]} tip={el[4]}/>
+                )}
+
                 <div className={"stats-with-field"}>
-                    <div className={"bold-red-text"}>Дополнительные очки навыков:</div>
+                    <PopUpTip text={"Костыль, необходимый для увеличения своего кол-ва очков навыков, если какие-то из хар-ок и владений достаются вам бесплатно"}>
+                        <div className={"bold-red-text"}>Дополнительные очки навыков:</div>
+                    </PopUpTip>
+
                     <IncDecInput val={charList.addSkillPoints.value[0]} setVal={charList.addSkillPoints.setValue(0)}/>
                 </div>
 

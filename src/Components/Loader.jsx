@@ -47,6 +47,7 @@ const defaultCharacter = [
     ["0"],
     ["0"],
     [startManeuvers],
+    [""],
     [""]
 ]
 

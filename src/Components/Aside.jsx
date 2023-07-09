@@ -31,16 +31,24 @@ const Aside = ({charList, evalList}) => {
                         <SimpleInput val={evalList.maxMane} setVal={() => {}} disabled={true} style={{width: "3rem"}}/>
                     </div>
                     <div className={"stats-with-field"}>
+                        <div className={"big-bold-red-text"}>КФЗ:</div>
+                        <SimpleInput val={evalList.KFZ} setVal={() => {}} disabled={true} style={{width: "3rem"}}/>
+                    </div>
+                    <div className={"stats-with-field"}>
+                        <div className={"big-bold-red-text"}>КМЗ:</div>
+                        <SimpleInput val={evalList.KMZ} setVal={() => {}} disabled={true} style={{width: "3rem"}}/>
+                    </div>
+                    <div className={"stats-with-field"}>
+                        <div className={"big-bold-red-text"}>Монеты:</div>
+                        <StandartDropValueInput val={charList.money.value[0]} setVal={charList.money.setValue(0)} style={{width: "3rem"}}/>
+                    </div>
+                    <div className={"stats-with-field"}>
                         <div className={"big-bold-red-text"}>Вдохновения:</div>
                         <IncDecInput val={charList.inspiration.value[0]} setVal={charList.inspiration.setValue(0)}/>
                     </div>
                     <div className={"stats-with-field"}>
                         <div className={"big-bold-red-text"}>Очки умений:</div>
                         <SimpleInput val={evalList.skillPoint} setVal={() => {}} disabled={true} style={{width: "3rem"}}/>
-                    </div>
-                    <div className={"stats-with-field"}>
-                        <div className={"big-bold-red-text"}>Монеты:</div>
-                        <StandartDropValueInput val={charList.money.value[0]} setVal={charList.money.setValue(0)} style={{width: "3rem"}}/>
                     </div>
                     <div className={"save-load-reset-block"}>
                         <div className={"bold-red-text"}>Загрузка и сохранение:</div>
