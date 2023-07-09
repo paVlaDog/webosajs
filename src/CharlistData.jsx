@@ -54,7 +54,7 @@ class CharlistData {
         harks: this.createStateArray("harks", 6, "0"),
         naviks: this.createStateArray("naviks", 20, "0"),
         vladenia: this.createStateArray("vladenia", 99, "0"),
-        equip: this.createStateArray("equip", 1, ""),
+        equip: this.createStateArray("equip", 1, "Рюкзак, спальник, простая одежда, рацион на 5 дней."),
         mage: this.createStateArray("mage", 1, "0"),
         things: this.createStateArray("things", 500, "0"),
         charClass: this.createStateArray("charClass", 1, ""),
