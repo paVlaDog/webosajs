@@ -13,12 +13,12 @@ const mapArray = new Map([
 
 const OneNavik = ({name, val, setVal, tipText}) => {
     return (
-        <PopUpTip text={tipText}>
-            <div className={"one-navik stats-with-field"}>
+        <div className={"one-navik stats-with-field"}>
+            <PopUpTip text={tipText}>
                 <label className={"bold-red-text"}>{name + ":"}</label>
-                <IncDecInputWithWords val={val} setVal={setVal} mapArray={mapArray}/>
-            </div>
-        </PopUpTip>
+            </PopUpTip>
+            <IncDecInputWithWords val={val} setVal={setVal} mapArray={mapArray}/>
+        </div>
     );
 };
 

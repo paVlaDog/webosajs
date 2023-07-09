@@ -5,12 +5,12 @@ import PopUpTip from "../UI/PopUpTip";
 
 const OneHark = ({name, val, setVal, tipText}) => {
     return (
-        <PopUpTip text={tipText}>
-            <div className={"stats-with-field"}>
+        <div className={"stats-with-field"}>
+            <PopUpTip text={tipText}>
                 <label className={"big-bold-red-text"}>{name + ":"}</label>
-                <IncDecInput className={"one-hark-inp"} val={val} setVal={setVal}/>
-            </div>
-        </PopUpTip>
+            </PopUpTip>
+            <IncDecInput className={"one-hark-inp"} val={val} setVal={setVal}/>
+        </div>
     );
 };
 

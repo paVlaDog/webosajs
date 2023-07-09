@@ -5,7 +5,6 @@ import SimpleButton from "./SimpleButton";
 const PopUpTip = ({ children, text }) => {
     const refSetTimeout = useRef();
     const [showToolTip, setShowToolTip] = useState(false);
-    const [showToolTip2, setShowToolTip2] = useState(false);
 
     const onMouseEnterHandler = () => {
         refSetTimeout.current = setTimeout(() => {
@@ -19,20 +18,14 @@ const PopUpTip = ({ children, text }) => {
         setShowToolTip(false);
     };
 
-    const changeShowToolTip2 = () => {
-        setShowToolTip2(!showToolTip2);
-    }
 
     return (
         <div className={"container"} onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
             {children}
              <div className={"tooltip"}>
-                 {(showToolTip || showToolTip2) &&
+                 {showToolTip &&
                      <div className={"toolTipText"}>
                         {text}
-                         <SimpleButton className={"toolTipTextButton"} onClick={changeShowToolTip2}>
-                             {!showToolTip2 ? "Закрепить" : "Открепить"}
-                         </SimpleButton>
                     </div>
                  }
              </div>
