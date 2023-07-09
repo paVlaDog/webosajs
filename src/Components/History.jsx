@@ -65,7 +65,7 @@ const History = ({charList, evalList}) => {
             <SimpleTextarea
                 value = {charList.history.value[0]}
                 onChange={(e) => {charList.history.setValue(0)(e.target.value)}}
-                placeholder={"Серый и убогий"}/>
+                placeholder={"Память отшибло"}/>
             <div className={"bold-red-text"}>Аспекты:</div>
             <SimpleTextarea
                 value = {charList.aspects.value[0]}

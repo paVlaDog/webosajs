@@ -48,7 +48,9 @@ const defaultCharacter = [
     ["0"],
     [startManeuvers],
     [""],
-    [""]
+    [""],
+    [""],
+    [""],
 ]
 
 const Loader = ({charList}) => {

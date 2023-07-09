@@ -84,7 +84,9 @@ class CharlistData {
         addMS: this.createStateArray("addMS", 1, "0"),
         maneuvers: this.createStateArray("maneuvers", 1, startManeuvers),
         ability: this.createStateArray("ability", 1, ""),
-        history: this.createStateArray("history", 1, ""),// loader
+        history: this.createStateArray("history", 1, ""),
+        preAddSkills: this.createStateArray("preAddSkills", 1, ""),
+        vliania: this.createStateArray("vliania", 1, ""),// loader
     }
 
     mageMDRBonus = this.list.mage.value[0] === 0 || this.list.mage.value[0] === "0" ? 0 :

@@ -454,7 +454,7 @@ const Stats = ({charList, evalList}) => {
             ["Восстановление маны на отдых", charList.addRestManeHeal.value[0], evalList.restManeHeal, charList.addRestManeHeal.setValue(0), "Среднее восстанавливаемое вами значение маны на отдыхе"],
             ["Восстановление хитов на привале", charList.addHaltHitsHeal.value[0], evalList.haltHitsHeal, charList.addHaltHitsHeal.setValue(0), "Среднее восстанавливаемое вами значение хитов на привале"],
             ["Восстановление маны на привале", charList.addHaltManeHeal.value[0], evalList.haltManeHeal, charList.addHaltManeHeal.setValue(0), "Среднее восстанавливаемое вами значение маны на привале"],
-            ["Очки манёвров", charList.addCountManeuver.value[0], evalList.countManeuver, charList.addCountManeuver.setValue(0), "Максимальное количество доступных вам манёвров"],
+            ["Максимум манёвров", charList.addCountManeuver.value[0], evalList.countManeuver, charList.addCountManeuver.setValue(0), "Максимальное количество доступных вам манёвров"],
             ["Скорость передвижения", charList.addMS.value[0], evalList.MS, charList.addMS.setValue(0), "Ваша скорость передвижения (в клетках)"],
     ]
 
