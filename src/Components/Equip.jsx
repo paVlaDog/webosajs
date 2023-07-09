@@ -8,6 +8,8 @@ import "./Equip.css"
 import PopUpTip from "../UI/PopUpTip";
 import HeaderWithTipBlock from "./HeaderWithTipBlock";
 import ButtonUnionTips from "../UI/ButtonUnionTips";
+import SimpleInput from "../UI/SimpleInput";
+import IncDecInputWithWords from "../UI/IncDecInputWithWords";
 
 const weaponsModifiers = "* Парное - Вы тратите 1 действие на атаку вместо 2.\n" +
     "* Простое - Простым считается оружие, не являющееся парным или двуручным.\n" +
@@ -31,7 +33,7 @@ const weaponsModifiers = "* Парное - Вы тратите 1 действи�
     "* Рубящее - рубящий урон.";
 
 const armorDescription = "Лёгкие доспехи не дают негативных бонусов, если это не прописано в самих доспехах.  \n" +
-    "Средние доспехи уменьшают бонус КФЗ от Ловкости в два раза и уменьшают скорость на 1.  \n" +
+    "Средние доспехи запрещают получать бонус от ловкости и уменьшают скорость на 1.    \n" +
     "Тяжёлые доспехи запрещают получать бонус от ловкости, уменьшают скорость на 2 и дают помеху на проверки навыков Ловкости и использование заклинаний.\n" +
     "Вы не получаете бонусы за второй щит(кроме баклера)."
 
@@ -393,6 +395,21 @@ const Equip = ({charList, evalList}) => {
                              ]
                          }/>
 
+
+
+    const mapArmorType = new Map([
+        [0, "Нет доспеха"],
+        [1, "Лёгкий"],
+        [2, "Средний"],
+        [3, "Тяжёлый"]
+    ])
+
+    const mapAmuletType = {
+        0: "Нет школы",
+        1: "От одной школы",
+        2: "От всех школ"
+    }
+
     return (
         <div>
             <HeaderWithTipBlock header={"Снаряжение"} tip={equipTip}/>
@@ -409,6 +426,52 @@ const Equip = ({charList, evalList}) => {
                 value = {charList.equip.value[0]}
                 onChange={(e) => {charList.equip.setValue(0)(e.target.value)}}
                 placeholder={"Мне нужна твоя одежда и твой мотоцикл"}/>
+            <Accordion title={"Экипированное"} content={
+                <div>
+                    <div className={"big-bold-red-text"}>Основная рука</div>
+                    <div>
+
+                    </div>
+                    <div className={"big-bold-red-text"}>Дополнительная рука</div>
+                    <div>
+
+                    </div>
+                    <div className={"big-bold-red-text"}>Доспех</div>
+                    <div>
+                        <div className={"stats-with-field"}>
+                            <div className={"bold-red-text"}>Название:</div>
+                            <SimpleInput val={charList.armorName.value[0]} setVal={charList.armorName.setValue(0)}/>
+                        </div>
+                        <div className={"stats-with-field"}>
+                            <div className={"bold-red-text"}>Тип:</div>
+                            <IncDecInputWithWords val={charList.armorType.value[0]} setVal={charList.armorType.setValue(0)}
+                                                  mapArray={mapArmorType} style={{width: "7rem"}}/>
+                        </div>
+                        <div className={"stats-with-field"}>
+                            <div className={"bold-red-text"}>Бонус защиты:</div>
+                            <IncDecInput val={charList.armorKFZ.value[0]} setVal={charList.armorKFZ.setValue(0)}/>
+                        </div>
+                    </div>
+                    <div className={"big-bold-red-text"}>Амулет</div>
+                    <div>
+                        <div className={"stats-with-field"}>
+                            <div className={"bold-red-text"}>Название:</div>
+                            <SimpleInput val={charList.amuletName.value[0]} setVal={charList.amuletName.setValue(0)}/>
+                        </div>
+                        <div className={"stats-with-field"}>
+                            <div className={"bold-red-text"}>Школа:</div>
+                            <IncDecInputWithWords val={charList.amuletType.value[0]} setVal={charList.amuletType.setValue(0)}
+                                                  mapArray={mapArmorType} style={{width: "7rem"}}/>
+                        </div>
+                        <div className={"stats-with-field"}>
+                            <div className={"bold-red-text"}>Бонус защиты:</div>
+                            <IncDecInput val={charList.amuletKMZ.value[0]} setVal={charList.amuletKMZ.setValue(0)}/>
+                        </div>
+                    </div>
+                </div>
+            }/>
+
+
             <SimpleButton onClick={() => {setBuyMode(!buyMode)}}>Включить режим закупки</SimpleButton>
             { buyMode &&
                 <div className={"buy-mode-block"}>

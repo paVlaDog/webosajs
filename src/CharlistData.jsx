@@ -86,7 +86,13 @@ class CharlistData {
         ability: this.createStateArray("ability", 1, ""),
         history: this.createStateArray("history", 1, ""),
         preAddSkills: this.createStateArray("preAddSkills", 1, ""),
-        vliania: this.createStateArray("vliania", 1, ""),// loader
+        vliania: this.createStateArray("vliania", 1, ""),
+        armorName: this.createStateArray("armorName", 1, ""),
+        armorType: this.createStateArray("armorType", 1, "0"),
+        armorKFZ: this.createStateArray("armorKFZ", 1, "0"),
+        amuletName: this.createStateArray("amuletName", 1, ""),
+        amuletType: this.createStateArray("amuletType", 1, "0"),
+        amuletKMZ: this.createStateArray("amuletKMZ", 1, "0"),// loader
     }
 
     mageMDRBonus = this.list.mage.value[0] === 0 || this.list.mage.value[0] === "0" ? 0 :
@@ -128,7 +134,8 @@ class CharlistData {
         maxMagicSchoolCount: this.list.naviks.value[13],
         GSI: this.SICreate(+this.list.boneHits.value[0], (+this.list.addGSI.value[0] + +this.list.harks.value[1])),
         MSI: this.SICreate(+this.list.boneMane.value[0], (+this.list.addMSI.value[0] + this.mageMDRBonus)),
-        KFZ: 5 + +this.list.harks.value[2] + +this.list.addKFZ.value[0],
+        KFZ: 5 + +this.list.addKFZ.value[0] + +this.list.armorKFZ.value[0] +
+            (+this.list.armorType.value[0] > 1 ? 0 : Math.floor(+this.list.harks.value[2] / 2)),
         KMZ: 5 + +this.list.harks.value[5] + +this.list.addKMZ.value[0],
         restHitsHeal: (this.ectoMaxHits / 4) + +this.list.addRestHitsHeal.value[0],
         restManeHeal: (this.ectoMaxMane / 4) + +this.list.addRestManeHeal.value[0],
@@ -136,7 +143,7 @@ class CharlistData {
         haltManeHeal: (this.ectoMaxMane / 8) + +this.list.addHaltManeHeal.value[0],
         capacity: 3 + +this.list.harks.value[0] + +this.list.addCapacity.value[0],
         countManeuver: 5 + 2 * +this.list.harks.value[4] + +this.list.addCountManeuver.value[0],
-        MS: 6 + +this.list.addMS.value[0]
+        MS: 6 + +this.list.addMS.value[0] - (+this.list.armorType.value[0] > 1 ? 1 : 0) - (+this.list.armorType.value[0] > 2 ? 1 : 0)
     }
 }
 
