@@ -1,6 +1,8 @@
 .tooltip {
-    position: absolute;
-    /*width: 180px;*/
+    /*position: absolute;*/
+    /*width: 30rem;*/
+    /*width: 70%;*/
+    /*left: 15%;*/
     /*border: 5px solid black;*/
     /*margin: 20px;*/
     /*padding: 4px 12px;*/
@@ -11,12 +13,23 @@
     border-radius: 12px ;
     text-align: center;
     white-space: pre-line;
+    /*top:50%;*/
+    /*left:100%;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*transform:translate(-50%, 0);*/
     /*font-weight: 400;*/
     /*pointer-events: none;*/
 }
 
-.tooltiptext {
+.toolTipText {
     border-radius: 12px;
     /*margin: 20px;*/
     padding: 4px 12px;
+}
+
+.toolTipText .toolTipTextButton {
+    background-color: bisque;
+    color: darkred;
+    font-weight: 400;
 }

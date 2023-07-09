@@ -49,7 +49,7 @@ class CharlistData {
         curHits: this.createStateArray("curHits", 1, "0"),
         curMane: this.createStateArray("curMane", 1, "0"),
         boneHits: this.createStateArray("boneHits", 1, "6"),
-        boneMane: this.createStateArray("boneMane", 1, "6"),
+        boneMane: this.createStateArray("boneMane", 1, "0"),
         inspiration: this.createStateArray("inspiration", 1, "0"),
         harks: this.createStateArray("harks", 6, "0"),
         naviks: this.createStateArray("naviks", 20, "0"),

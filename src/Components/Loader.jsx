@@ -91,9 +91,12 @@ const Loader = ({charList}) => {
     }
 
     function resetCharacter() {
-        const setData = Object.entries(charList).map((el) => el[1].setArray);
-        for (let i=0; i < defaultCharacter.length; i++) {
-            setData[i](defaultCharacter[i]);
+        const ans = window.confirm("Вы уверены, что хотите сбросить персонажа?")
+        if (ans) {
+            const setData = Object.entries(charList).map((el) => el[1].setArray);
+            for (let i=0; i < defaultCharacter.length; i++) {
+                setData[i](defaultCharacter[i]);
+            }
         }
     }
 

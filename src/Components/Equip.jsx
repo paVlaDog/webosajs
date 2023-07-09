@@ -333,7 +333,7 @@ const addEquips = (equip, things, setEquip, ) => {
             if (things[getShift(i) + j] === 1) {
                 if (currentEquip !== "") currentEquip += ", "
                 currentEquip += namesMas[i][j][0].trim();
-            } else if (things[getShift(i) + j] !== "0") {
+            } else if (things[getShift(i) + j] !== "0" && things[getShift(i) + j] !== 0) {
                 if (currentEquip !== "") currentEquip += ", "
                 currentEquip += namesMas[i][j][0].trim() + "(" + things[getShift(i) + j] + " штук)";
             }
