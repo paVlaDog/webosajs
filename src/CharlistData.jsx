@@ -92,7 +92,31 @@ class CharlistData {
         armorKFZ: this.createStateArray("armorKFZ", 1, "0"),
         amuletName: this.createStateArray("amuletName", 1, ""),
         amuletType: this.createStateArray("amuletType", 1, "0"),
-        amuletKMZ: this.createStateArray("amuletKMZ", 1, "0"),// loader
+        amuletKMZ: this.createStateArray("amuletKMZ", 1, "0"),
+        boneMainWeapons: this.createStateArray("boneMainWeapons", 1, "0"),
+        MODMainWeapons: this.createStateArray("MODMainWeapons", 1, "0"),
+        boneAdditionalWeapons: this.createStateArray("boneAdditionalWeapons", 1, "0"),
+        MODAdditionalWeapons: this.createStateArray("MODAdditionalWeapons", 1, "0"),
+        KFZMainShield: this.createStateArray("KFZMainShield", 1, "0"),
+        KFZAdditionalShield: this.createStateArray("KFZAdditionalShield", 1, "0"),// loader
+        KFZMainShieldDefense: this.createStateArray("KFZMainShieldDefense", 1, "0"),
+        KFZAdditionalShieldDefense: this.createStateArray("KFZAdditionalShieldDefense", 1, "0"),
+        nameMainWeapons: this.createStateArray("nameMainWeapons", 1, ""),
+        nameAdditionalWeapons: this.createStateArray("nameAdditionalWeapons", 1, ""),
+        nameMainShield: this.createStateArray("nameMainShield", 1, ""),
+        nameAdditionalShield: this.createStateArray("nameAdditionalShield", 1, ""),
+        nameMainFocus: this.createStateArray("nameMainFocus", 1, ""),
+        nameAdditionalFocus: this.createStateArray("nameAdditionalFocus", 1, ""),
+        BKMainFocus: this.createStateArray("BKMainFocus", 1, "0"),
+        BKAdditionalFocus: this.createStateArray("BKAdditionalFocus", 1, "0"),
+        currentMainEquip: this.createStateArray("currentMainEquip", 1, "3"),
+        currentAdditionalEquip: this.createStateArray("currentAdditionalEquip", 1, "3"),
+        currentMainWeaponsType: this.createStateArray("currentMainWeaponsType", 1, "0"),
+        currentAdditionalWeaponsType: this.createStateArray("currentAdditionalWeaponsType", 1, "0"),
+        defenseMode: this.createStateArray("defenseMode", 1, "0"),
+        addMODWeaponsAttack: this.createStateArray("addMODWeaponsAttack", 1, "0"),
+        fencingMainWeapons: this.createStateArray("fencingMainWeapons", 1, "0"),
+        fencingAdditionalWeapons: this.createStateArray("fencingAdditionalWeapons", 1, "0"),
     }
 
     mageMDRBonus = this.list.mage.value[0] === 0 || this.list.mage.value[0] === "0" ? 0 :
@@ -111,6 +135,14 @@ class CharlistData {
         val === 0 ? +add :
         val < 4 ? "1к4" + this.detectSign((val - 4) / 2 + +add):
         val < 12 ? "1к" + val + (+add === 0 ? "" : "+" + +add) : "1к12+" + this.detectSign((val - 12) / 2 + +add)
+
+    boneCreate = (val) => val === 0 || val === "0" ? 0 :
+                            val < 4 ? "1к4-" + (4 - val) / 2 :
+                                val < 14 ? "1к" + val :
+                                    val < 16 ? "1к12+" + (val - 12) / 2 :
+                                        val < 18 ? "2к8" :
+                                            val < 20 ? "2к8+1" :
+                                                val < 22 ? "1к20" : "1к20+" + (val - 20) / 2
 
 
 
@@ -135,15 +167,23 @@ class CharlistData {
         GSI: this.SICreate(+this.list.boneHits.value[0], (+this.list.addGSI.value[0] + +this.list.harks.value[1])),
         MSI: this.SICreate(+this.list.boneMane.value[0], (+this.list.addMSI.value[0] + this.mageMDRBonus)),
         KFZ: 5 + +this.list.addKFZ.value[0] + +this.list.armorKFZ.value[0] +
-            (+this.list.armorType.value[0] > 1 ? 0 : Math.floor(+this.list.harks.value[2] / 2)),
-        KMZ: 5 + +this.list.harks.value[5] + +this.list.addKMZ.value[0],
+            (+this.list.armorType.value[0] > 1 ? 0 : Math.floor(+this.list.harks.value[2] / 2))
+        + +this.list.KFZMainShield.value[0] + +this.list.KFZAdditionalShield.value[0] +
+            (+this.list.defenseMode.value[0] === 1 ? 1 + +this.list.KFZMainShieldDefense.value[0] + +this.list.KFZAdditionalShieldDefense.value[0] : 0),
+        KMZ: 5 + +this.list.harks.value[5] + +this.list.addKMZ.value[0] + +this.list.amuletKMZ.value[0],
         restHitsHeal: (this.ectoMaxHits / 4) + +this.list.addRestHitsHeal.value[0],
         restManeHeal: (this.ectoMaxMane / 4) + +this.list.addRestManeHeal.value[0],
         haltHitsHeal: (this.ectoMaxHits / 8) + +this.list.addHaltHitsHeal.value[0],
         haltManeHeal: (this.ectoMaxMane / 8) + +this.list.addHaltManeHeal.value[0],
         capacity: 3 + +this.list.harks.value[0] + +this.list.addCapacity.value[0],
         countManeuver: 5 + 2 * +this.list.harks.value[4] + +this.list.addCountManeuver.value[0],
-        MS: 6 + +this.list.addMS.value[0] - (+this.list.armorType.value[0] > 1 ? 1 : 0) - (+this.list.armorType.value[0] > 2 ? 1 : 0)
+        MS: 6 + +this.list.addMS.value[0] - (+this.list.armorType.value[0] > 1 ? 1 : 0) - (+this.list.armorType.value[0] > 2 ? 1 : 0),
+        weaponsAttack: "1к20+" + this.boneCreate(this.list.boneMainWeapons.value[0]) + "+" +
+            ((+this.list.fencingMainWeapons.value[0] === 0 ? +this.list.harks.value[0] : +this.list.harks.value[2])
+                + +this.list.MODMainWeapons.value[0] + +this.list.addMODWeaponsAttack.value[0]),
+        weaponsAdditionalAttack: "1к20+" + this.boneCreate(this.list.boneAdditionalWeapons.value[0]) + "+" +
+            ((+this.list.fencingAdditionalWeapons.value[0] === 0 ? +this.list.harks.value[0] : +this.list.harks.value[2])
+                + +this.list.MODAdditionalWeapons.value[0] + +this.list.addMODWeaponsAttack.value[0]),
     }
 }
 

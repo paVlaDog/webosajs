@@ -9,3 +9,15 @@
     text-align: center;
     cursor: pointer;
 }
+
+.other-simple-button button {
+    min-width: 30px;
+    padding: 2px 5px;
+    margin: 5px 5px;
+    border: 1px solid goldenrod;
+    border-radius: 5px;
+    background-color: bisque;
+    color: darkred;
+    text-align: center;
+    cursor: pointer;
+}

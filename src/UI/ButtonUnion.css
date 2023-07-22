@@ -1,0 +1,9 @@
+.button-union {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-in-union {
+    margin: 0 0;
+}

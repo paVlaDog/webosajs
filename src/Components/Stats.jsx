@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import OneHark from "./OneHark";
 import OneNavik from "./OneNavik";
 import "./Stats.css";
@@ -14,6 +14,8 @@ import PopUpTip from "../UI/PopUpTip";
 import SimpleButton from "../UI/SimpleButton";
 import HeaderWithTipBlock from "./HeaderWithTipBlock";
 import ButtonUnionTips from "../UI/ButtonUnionTips";
+import BoneIncDecInput from "../UI/BoneIncDecInput";
+import ButtonUnion from "../UI/ButtonUnion";
 
 const harksName = ["Сила", "Телосложение", "Ловкость", "Интеллект", "Мудрость", "Харизма"];
 
@@ -314,15 +316,6 @@ const Stats = ({charList, evalList}) => {
         }/>)
     }
 
-    function boneInputCreate (val, setVal) {
-        return <div className={"bone-input"}>
-            <IncDecInput val={
-                val === 0 || val === "0" ? 0 :
-                val < 4 ? "1к4-" + (4 - val) / 2 :
-                val < 12 ? "1к" + val : "1к12+" + (val - 12) / 2
-            } setVal={setVal} decFunc={() => setVal(val <= 2 ? 0 : +val - 2)} incFunc={() => setVal(+val + 2)}/></div>
-    }
-
     const harksTip =
         <ButtonUnionTips count={4}
                          namesArray={["Характеристики", "Навыки", "Прокачка", "Использование"]}
@@ -459,8 +452,10 @@ const Stats = ({charList, evalList}) => {
     ]
 
 
+    const [choose, setChoose] = useState("0");
     return (
         <div>
+
             <div className={"harks"}>
                 <HeaderWithTipBlock header={"Характеристики и навыки"} tip={harksTip}/>
 
@@ -482,13 +477,13 @@ const Stats = ({charList, evalList}) => {
                     <PopUpTip text={"Кость хитов влияет на ЖСИ. Со старта - 1к6 для всех."}>
                         <label className={"bold-red-text"}>{"Кость хитов" + ":"}</label>
                     </PopUpTip>
-                    {boneInputCreate(charList.boneHits.value[0], charList.boneHits.setValue(0))}
+                    <BoneIncDecInput val={charList.boneHits.value[0]} setVal={charList.boneHits.setValue(0)}/>
                 </div>
                 <div className={"stats-with-field"}>
                     <PopUpTip text={"Кость маны влияет на МСИ. Со старта - 0, если вы не заклинатель."}>
                         <label className={"bold-red-text"}>{"Кость маны" + ":"}</label>
                     </PopUpTip>
-                    {boneInputCreate(charList.boneMane.value[0], charList.boneMane.setValue(0))}
+                    <BoneIncDecInput val={charList.boneMane.value[0]} setVal={charList.boneMane.setValue(0)}/>
                 </div>
 
                 {otherStatsArray.map((el) =>
@@ -501,6 +496,14 @@ const Stats = ({charList, evalList}) => {
                     </PopUpTip>
 
                     <IncDecInput val={charList.addSkillPoints.value[0]} setVal={charList.addSkillPoints.setValue(0)}/>
+                </div>
+
+                <div className={"stats-with-field"}>
+                    <PopUpTip text={"Подсказки не завезли"}>
+                        <div className={"bold-red-text"}>Бонус МОДификатора урона оружием:</div>
+                    </PopUpTip>
+
+                    <IncDecInput val={charList.addMODWeaponsAttack.value[0]} setVal={charList.addMODWeaponsAttack.setValue(0)}/>
                 </div>
 
                 {/*<StatsWithSimpleInput name={"Увеличения максимума хитов"} val={charList.addMaxHits.value[0]} setVal={charList.addMaxHits.setValue(0)} style={{width: "3rem"}}/>*/}

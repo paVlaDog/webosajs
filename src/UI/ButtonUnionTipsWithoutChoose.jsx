@@ -25,25 +25,24 @@ const buttonInUnionStyleRight = {
     borderBottomLeftRadius: "0px"
 }
 
-const ButtonUnionTips = ({count, namesArray, tipsArray}) => {
+const ButtonUnionTips = ({count, namesArray, tipsArray, chooseButton, setChooseButton}) => {
     const allButton = []
-    const [choiseButton, setChoiseButton] = useState(0);
     const allTips = []
 
     for (let i = 0; i < count; i++) {
         allButton.push(<SimpleButton
             style={{...(i === 0 ? buttonInUnionStyleLeft :
             i === count - 1 ? buttonInUnionStyleRight : buttonInUnionStyleCenter),
-                color: choiseButton === i ? "darkred" : "white",
-                backgroundColor: choiseButton === i ? "bisque" : "goldenrod"
+                color: +chooseButton === i ? "darkred" : "white",
+                backgroundColor: +chooseButton === i ? "bisque" : "goldenrod"
             }}
             className={"button-in-union first-button"}
-            onClick={() => setChoiseButton(i)}
+            onClick={() => setChooseButton(+i)}
         >{namesArray[i]}</SimpleButton>)
     }
 
     for (let i = 0; i < count; i++) {
-        allTips.push(<div>{choiseButton === i && tipsArray[i]}</div>)
+        allTips.push(<div>{+chooseButton === i && tipsArray[i]}</div>)
     }
 
     return (

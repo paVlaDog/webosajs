@@ -10,6 +10,10 @@ import HeaderWithTipBlock from "./HeaderWithTipBlock";
 import ButtonUnionTips from "../UI/ButtonUnionTips";
 import SimpleInput from "../UI/SimpleInput";
 import IncDecInputWithWords from "../UI/IncDecInputWithWords";
+import BoneIncDecInput from "../UI/BoneIncDecInput";
+import ButtonUnion from "../UI/ButtonUnion";
+import ButtonUnionTipsWithoutChoose from "../UI/ButtonUnionTipsWithoutChoose";
+import Checkbox from "./Checkbox";
 
 const weaponsModifiers = "* Парное - Вы тратите 1 действие на атаку вместо 2.\n" +
     "* Простое - Простым считается оружие, не являющееся парным или двуручным.\n" +
@@ -427,47 +431,178 @@ const Equip = ({charList, evalList}) => {
                 onChange={(e) => {charList.equip.setValue(0)(e.target.value)}}
                 placeholder={"Мне нужна твоя одежда и твой мотоцикл"}/>
             <Accordion title={"Экипированное"} content={
-                <div>
-                    <div className={"big-bold-red-text"}>Основная рука</div>
-                    <div>
+                <div className={"harks-and-naviks-blocks"}>
+                    <div className={"harks-and-naviks-block"}>
+                        <div className={"big-bold-red-text"}>Основная рука</div>
+                        <div className={"stats-with-field"}>
+                            <ButtonUnionTipsWithoutChoose count={4} namesArray={["Оружие", "Щит", "Фокусировка", "Свободная"]}
+                                                          chooseButton={charList.currentMainEquip.value[0]}
+                                                          setChooseButton={charList.currentMainEquip.setValue(0)}
+                                                          tipsArray={[
+                                                              <div>
+                                                                  <div className={"stats-with-field"}>
+                                                                      <div className={"bold-red-text"}>Тип оружия:</div>
+                                                                      <ButtonUnion count={3} namesArray={["Парное", "Простое", "Двуручное"]}
+                                                                                   chooseButton={charList.currentMainWeaponsType.value[0]}
+                                                                                   setChooseButton={charList.currentMainWeaponsType.setValue(0)}/>
+                                                                  </div>
+                                                                  <div className={"stats-with-field"}>
+                                                                      <div className={"bold-red-text"}>Название:</div>
+                                                                      <SimpleInput val={charList.nameMainWeapons.value[0]} setVal={charList.nameMainWeapons.setValue(0)}/>
+                                                                  </div>
+                                                                  <div>
+                                                                      <div className={"stats-with-field"}>
+                                                                          <div className={"bold-red-text"}>Кость:</div>
+                                                                          <BoneIncDecInput val={charList.boneMainWeapons.value[0]} setVal={charList.boneMainWeapons.setValue(0)}/>
+                                                                          <Checkbox val={charList.fencingMainWeapons.value[0]} setVal={charList.fencingMainWeapons.setValue(0)}
+                                                                                    names={["Фехтовальное вкл", "Фехтовальное выкл"]}/>
+                                                                      </div>
+                                                                      <div className={"stats-with-field"}>
+                                                                          <div className={"bold-red-text"}>Модификатор атаки:</div>
+                                                                          <IncDecInput val={charList.MODMainWeapons.value[0]} setVal={charList.MODMainWeapons.setValue(0)}/>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>,
+                                                              <div>
+                                                                  <div className={"stats-with-field"}>
+                                                                      <div className={"bold-red-text"}>Название:</div>
+                                                                      <SimpleInput val={charList.nameMainShield.value[0]} setVal={charList.nameMainShield.setValue(0)}/>
+                                                                  </div>
+                                                                  <div>
+                                                                      <div className={"stats-with-field"}>
+                                                                          <div className={"bold-red-text"}>КД:</div>
+                                                                          <IncDecInput val={charList.KFZMainShield.value[0]} setVal={charList.KFZMainShield.setValue(0)}/>
+                                                                      </div>
+                                                                  </div>
+                                                                  <div>
+                                                                      <div className={"stats-with-field"}>
+                                                                          <div className={"bold-red-text"}>КД от обороны:</div>
+                                                                          <IncDecInput val={charList.KFZMainShieldDefense.value[0]} setVal={charList.KFZMainShieldDefense.setValue(0)}/>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>,
+                                                              <div>
+                                                                  <div className={"stats-with-field"}>
+                                                                      <div className={"bold-red-text"}>Название:</div>
+                                                                      <SimpleInput val={charList.nameMainFocus.value[0]} setVal={charList.nameMainFocus.setValue(0)}/>
+                                                                  </div>
+                                                                  <div>
+                                                                      <div className={"stats-with-field"}>
+                                                                          <div className={"bold-red-text"}>Бонус каста:</div>
+                                                                          <IncDecInput val={charList.BKMainFocus.value[0]} setVal={charList.BKMainFocus.setValue(0)}/>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                          ]}/>
+                        </div>
+                    </div>
+                    {
+                        (+charList.currentMainEquip.value[0] !== 0 || +charList.currentMainWeaponsType.value[0] !== 2) &&
+                        <div className={"harks-and-naviks-block"}>
+                            <div className={"big-bold-red-text"}>Дополнительная рука</div>
+                            <div className={"stats-with-field"}>
+                                <ButtonUnionTipsWithoutChoose count={4} namesArray={["Оружие", "Щит", "Фокусировка", "Свободная"]}
+                                                              chooseButton={charList.currentAdditionalEquip.value[0]}
+                                                              setChooseButton={charList.currentAdditionalEquip.setValue(0)}
+                                                              tipsArray={[
+                                                                  <div>
+                                                                      <div className={"stats-with-field"}>
+                                                                          <div className={"bold-red-text"}>Тип оружия:</div>
+                                                                          <ButtonUnion count={2} namesArray={["Парное", "Простое"]}
+                                                                                       chooseButton={charList.currentAdditionalWeaponsType.value[0]}
+                                                                                       setChooseButton={charList.currentAdditionalWeaponsType.setValue(0)}/>
+                                                                      </div>
+                                                                      <div className={"stats-with-field"}>
+                                                                          <div className={"bold-red-text"}>Название:</div>
+                                                                          <SimpleInput val={charList.nameAdditionalWeapons.value[0]} setVal={charList.nameAdditionalWeapons.setValue(0)}/>
+                                                                      </div>
+                                                                      <div>
+                                                                          <div className={"stats-with-field"}>
+                                                                              <div className={"bold-red-text"}>Кость:</div>
+                                                                              <BoneIncDecInput val={charList.boneAdditionalWeapons.value[0]} setVal={charList.boneAdditionalWeapons.setValue(0)}/>
+                                                                              <Checkbox val={charList.fencingAdditionalWeapons.value[0]} setVal={charList.fencingAdditionalWeapons.setValue(0)}
+                                                                                        names={["Фехтовальное вкл", "Фехтовальное выкл"]}/>
+                                                                          </div>
+                                                                          <div className={"stats-with-field"}>
+                                                                              <div className={"bold-red-text"}>Модификатор атаки:</div>
+                                                                              <IncDecInput val={charList.MODAdditionalWeapons.value[0]} setVal={charList.MODAdditionalWeapons.setValue(0)}/>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>,
+                                                                  <div>
+                                                                      <div className={"stats-with-field"}>
+                                                                          <div className={"bold-red-text"}>Название:</div>
+                                                                          <SimpleInput val={charList.nameAdditionalShield.value[0]} setVal={charList.nameAdditionalShield.setValue(0)}/>
+                                                                      </div>
+                                                                      <div>
+                                                                          <div className={"stats-with-field"}>
+                                                                              <div className={"bold-red-text"}>КД:</div>
+                                                                              <IncDecInput val={charList.KFZAdditionalShield.value[0]} setVal={charList.KFZAdditionalShield.setValue(0)}/>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div>
+                                                                          <div className={"stats-with-field"}>
+                                                                              <div className={"bold-red-text"}>КД от обороны:</div>
+                                                                              <IncDecInput val={charList.KFZAdditionalShieldDefense.value[0]} setVal={charList.KFZAdditionalShieldDefense.setValue(0)}/>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>,
+                                                                  <div>
+                                                                      <div className={"stats-with-field"}>
+                                                                          <div className={"bold-red-text"}>Название:</div>
+                                                                          <SimpleInput val={charList.nameAdditionalFocus.value[0]} setVal={charList.nameAdditionalFocus.setValue(0)}/>
+                                                                      </div>
+                                                                      <div>
+                                                                          <div className={"stats-with-field"}>
+                                                                              <div className={"bold-red-text"}>Бонус каста:</div>
+                                                                              <IncDecInput val={charList.BKAdditionalFocus.value[0]} setVal={charList.BKAdditionalFocus.setValue(0)}/>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              ]}/>
+                            </div>
+                        </div>
+                    }
 
-                    </div>
-                    <div className={"big-bold-red-text"}>Дополнительная рука</div>
-                    <div>
 
-                    </div>
-                    <div className={"big-bold-red-text"}>Доспех</div>
-                    <div>
-                        <div className={"stats-with-field"}>
-                            <div className={"bold-red-text"}>Название:</div>
-                            <SimpleInput val={charList.armorName.value[0]} setVal={charList.armorName.setValue(0)}/>
-                        </div>
-                        <div className={"stats-with-field"}>
-                            <div className={"bold-red-text"}>Тип:</div>
-                            <IncDecInputWithWords val={charList.armorType.value[0]} setVal={charList.armorType.setValue(0)}
-                                                  mapArray={mapArmorType} style={{width: "7rem"}}/>
-                        </div>
-                        <div className={"stats-with-field"}>
-                            <div className={"bold-red-text"}>Бонус защиты:</div>
-                            <IncDecInput val={charList.armorKFZ.value[0]} setVal={charList.armorKFZ.setValue(0)}/>
-                        </div>
-                    </div>
-                    <div className={"big-bold-red-text"}>Амулет</div>
-                    <div>
-                        <div className={"stats-with-field"}>
-                            <div className={"bold-red-text"}>Название:</div>
-                            <SimpleInput val={charList.amuletName.value[0]} setVal={charList.amuletName.setValue(0)}/>
-                        </div>
-                        <div className={"stats-with-field"}>
-                            <div className={"bold-red-text"}>Школа:</div>
-                            <IncDecInputWithWords val={charList.amuletType.value[0]} setVal={charList.amuletType.setValue(0)}
-                                                  mapArray={mapArmorType} style={{width: "7rem"}}/>
-                        </div>
-                        <div className={"stats-with-field"}>
-                            <div className={"bold-red-text"}>Бонус защиты:</div>
-                            <IncDecInput val={charList.amuletKMZ.value[0]} setVal={charList.amuletKMZ.setValue(0)}/>
+                    <div className={"harks-and-naviks-block"}>
+                        <div className={"big-bold-red-text"}>Доспех</div>
+                        <div>
+                            <div className={"stats-with-field"}>
+                                <div className={"bold-red-text"}>Название:</div>
+                                <SimpleInput val={charList.armorName.value[0]} setVal={charList.armorName.setValue(0)}/>
+                            </div>
+                            <div className={"stats-with-field"}>
+                                <div className={"bold-red-text"}>Тип:</div>
+                                <IncDecInputWithWords val={charList.armorType.value[0]} setVal={charList.armorType.setValue(0)}
+                                                      mapArray={mapArmorType} style={{width: "7rem"}}/>
+                            </div>
+                            <div className={"stats-with-field"}>
+                                <div className={"bold-red-text"}>КД:</div>
+                                <IncDecInput val={charList.armorKFZ.value[0]} setVal={charList.armorKFZ.setValue(0)}/>
+                            </div>
                         </div>
                     </div>
+
+                    <div className={"harks-and-naviks-block"}>
+                        <div className={"big-bold-red-text"}>Амулет</div>
+                        <div>
+                            <div className={"stats-with-field"}>
+                                <div className={"bold-red-text"}>Название:</div>
+                                <SimpleInput val={charList.amuletName.value[0]} setVal={charList.amuletName.setValue(0)}/>
+                            </div>
+                            <div className={"stats-with-field"}>
+                                <div className={"bold-red-text"}>Школа:</div>
+                                <IncDecInputWithWords val={charList.amuletType.value[0]} setVal={charList.amuletType.setValue(0)}
+                                                      mapArray={mapArmorType} style={{width: "7rem"}}/>
+                            </div>
+                            <div className={"stats-with-field"}>
+                                <div className={"bold-red-text"}>Бонус КМЗ:</div>
+                                <IncDecInput val={charList.amuletKMZ.value[0]} setVal={charList.amuletKMZ.setValue(0)}/>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             }/>
 

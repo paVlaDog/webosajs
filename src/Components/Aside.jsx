@@ -4,6 +4,7 @@ import "./Aside.css"
 import SimpleInput from "../UI/SimpleInput";
 import StandartDropValueInput from "../UI/StandartDropValueInput";
 import Loader from "./Loader";
+import Checkbox from "./Checkbox";
 
 const Aside = ({charList, evalList}) => {
     return (
@@ -33,6 +34,8 @@ const Aside = ({charList, evalList}) => {
                     <div className={"stats-with-field"}>
                         <div className={"big-bold-red-text"}>КФЗ:</div>
                         <SimpleInput val={evalList.KFZ} setVal={() => {}} disabled={true} style={{width: "3rem"}}/>
+                        <Checkbox val={charList.defenseMode.value[0]} setVal={charList.defenseMode.setValue(0)}
+                                  names={["Оборона вкл", "Оборона выкл"]}/>
                     </div>
                     <div className={"stats-with-field"}>
                         <div className={"big-bold-red-text"}>КМЗ:</div>
@@ -50,6 +53,18 @@ const Aside = ({charList, evalList}) => {
                         <div className={"big-bold-red-text"}>Очки умений:</div>
                         <SimpleInput val={evalList.skillPoint} setVal={() => {}} disabled={true} style={{width: "3rem"}}/>
                     </div>
+                    {
+                        (+charList.currentMainEquip.value[0] === 0) && <div className={"stats-with-field"}>
+                            <div className={"big-bold-red-text"}>Основное оружие:</div>
+                            <SimpleInput val={evalList.weaponsAttack} setVal={() => {}} disabled={true} style={{width: "7rem"}}/>
+                        </div>
+                    }
+                    {
+                        (+charList.currentAdditionalEquip.value[0] === 0) && <div className={"stats-with-field"}>
+                            <div className={"big-bold-red-text"}>Дополнительное оружие:</div>
+                            <SimpleInput val={evalList.weaponsAdditionalAttack} setVal={() => {}} disabled={true} style={{width: "7rem"}}/>
+                        </div>
+                    }
                     <div className={"save-load-reset-block"}>
                         <div className={"bold-red-text"}>Загрузка и сохранение:</div>
                         <Loader charList={charList}/>
