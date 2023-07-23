@@ -81,6 +81,10 @@ const defaultCharacter = [
     ["0"],
     ["0"],
     ["0"],
+    ["0"],
+    ["0"],
+    ["0"],
+    ["0"],
 ]
 
 const Loader = ({charList}) => {

@@ -65,6 +65,12 @@ const Aside = ({charList, evalList}) => {
                             <SimpleInput val={evalList.weaponsAdditionalAttack} setVal={() => {}} disabled={true} style={{width: "7rem"}}/>
                         </div>
                     }
+                    {
+                        (+charList.mage.value[0] !== 0) && <div className={"stats-with-field"}>
+                            <div className={"big-bold-red-text"}>Бросок заклинания:</div>
+                            <SimpleInput val={evalList.mageAttack} setVal={() => {}} disabled={true} style={{width: "7rem"}}/>
+                        </div>
+                    }
                     <div className={"save-load-reset-block"}>
                         <div className={"bold-red-text"}>Загрузка и сохранение:</div>
                         <Loader charList={charList}/>

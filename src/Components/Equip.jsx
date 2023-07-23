@@ -41,6 +41,11 @@ const armorDescription = "Лёгкие доспехи не дают негати
     "Тяжёлые доспехи запрещают получать бонус от ловкости, уменьшают скорость на 2 и дают помеху на проверки навыков Ловкости и использование заклинаний.\n" +
     "Вы не получаете бонусы за второй щит(кроме баклера)."
 
+const mageDescription = "Некоторые заклинания нуждаются в фокусировке - неком предмете, который способен помочь сконцентрировать магические силы \n" +
+    "Различные фокусировки отличаются по необходимости зарядки (Кристаллы необходимо менять), " +
+    "удобству(одноручная фокусировка явно удобнее двуручной) и бонусу каста (некоторые имеют свойство +1, добавляющее +1 к бонусу каста)\n" +
+    "Также, некоторые заклинания получают дополнительные эффекты при использовании фокусировки"
+
 const preWeaponsText = [
     "Стандартный урон парного оружия: (Новичок: МОД/2 | Ученик: 1к4+МОД/2 | Ветеран: 1к8+МОД/2 | Мастер: 1к12+МОД/2)\n",
     "Стандартный урон простого оружия: (Новичок: 1к4+МОД | Ученик: 1к8+МОД | Ветеран: 1к12+МОД | Мастер: 2к8+МОД)\n",
@@ -483,6 +488,12 @@ const Equip = ({charList, evalList}) => {
                                                               </div>,
                                                               <div>
                                                                   <div className={"stats-with-field"}>
+                                                                      <div className={"bold-red-text"}>Тип фокусировки:</div>
+                                                                      <ButtonUnion count={2} namesArray={["Простое", "Двуручное"]}
+                                                                                   chooseButton={charList.focusType.value[0]}
+                                                                                   setChooseButton={charList.focusType.setValue(0)}/>
+                                                                  </div>
+                                                                  <div className={"stats-with-field"}>
                                                                       <div className={"bold-red-text"}>Название:</div>
                                                                       <SimpleInput val={charList.nameMainFocus.value[0]} setVal={charList.nameMainFocus.setValue(0)}/>
                                                                   </div>
@@ -498,6 +509,7 @@ const Equip = ({charList, evalList}) => {
                     </div>
                     {
                         (+charList.currentMainEquip.value[0] !== 0 || +charList.currentMainWeaponsType.value[0] !== 2) &&
+                        +charList.focusType.value[0] === 0 &&
                         <div className={"harks-and-naviks-block"}>
                             <div className={"big-bold-red-text"}>Дополнительная рука</div>
                             <div className={"stats-with-field"}>
@@ -697,6 +709,11 @@ const Equip = ({charList, evalList}) => {
                     }/>
                     <Accordion title={"Магические усиления и амулеты"} content={
                         <div>
+                            <Accordion title={"Правила фокусировок и амулетов"} content={
+                                <div>
+                                    {mapToDiv(mageDescription)}
+                                </div>
+                            }/>
                             <Accordion title={"Магическая фокусировка"} content={
                                 <div>
                                     {getAccordionContent(12, charList)}

@@ -13,7 +13,7 @@ const BoneIncDecInput = ({val, setVal}) => {
                                 val < 18 ? "2к8" :
                                     val < 20 ? "2к8+1" :
                                         val < 22 ? "1к20" : "1к20+" + (val - 20) / 2
-            } setVal={setVal} decFunc={() => setVal(val <= 2 ? 0 : +val - 2)} incFunc={() => setVal(+val + 2)} disabled={true}/>
+            } setVal={setVal} decFunc={() => setVal(val <= 2 ? 0 : +val - 2)} incFunc={() => setVal(+val + 2)} disabled={true} className={"bone-inc-dec-input"}/>
         </div>
     );
 };

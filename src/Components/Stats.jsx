@@ -506,6 +506,14 @@ const Stats = ({charList, evalList}) => {
                     <IncDecInput val={charList.addMODWeaponsAttack.value[0]} setVal={charList.addMODWeaponsAttack.setValue(0)}/>
                 </div>
 
+                <div className={"stats-with-field"}>
+                    <PopUpTip text={"Подсказки не завезли"}>
+                        <div className={"bold-red-text"}>Дополнительный бонус каста:</div>
+                    </PopUpTip>
+
+                    <IncDecInput val={charList.addBK.value[0]} setVal={charList.addBK.setValue(0)}/>
+                </div>
+
                 {/*<StatsWithSimpleInput name={"Увеличения максимума хитов"} val={charList.addMaxHits.value[0]} setVal={charList.addMaxHits.setValue(0)} style={{width: "3rem"}}/>*/}
                 {/*<StatsWithSimpleInput name={"Увеличения максимума маны"} val={charList.addMaxMane.value[0]} setVal={charList.addMaxMane.setValue(0)} style={{width: "3rem"}}/>*/}
                 {/*<StatsWithSimpleInput name={"Жизненные силы (ЖСИ)"} val={evalList.GSI} setVal={() => {}} style={{width: "5rem"}} disable={true}/>*/}

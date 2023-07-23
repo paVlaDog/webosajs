@@ -98,7 +98,7 @@ class CharlistData {
         boneAdditionalWeapons: this.createStateArray("boneAdditionalWeapons", 1, "0"),
         MODAdditionalWeapons: this.createStateArray("MODAdditionalWeapons", 1, "0"),
         KFZMainShield: this.createStateArray("KFZMainShield", 1, "0"),
-        KFZAdditionalShield: this.createStateArray("KFZAdditionalShield", 1, "0"),// loader
+        KFZAdditionalShield: this.createStateArray("KFZAdditionalShield", 1, "0"),
         KFZMainShieldDefense: this.createStateArray("KFZMainShieldDefense", 1, "0"),
         KFZAdditionalShieldDefense: this.createStateArray("KFZAdditionalShieldDefense", 1, "0"),
         nameMainWeapons: this.createStateArray("nameMainWeapons", 1, ""),
@@ -117,14 +117,18 @@ class CharlistData {
         addMODWeaponsAttack: this.createStateArray("addMODWeaponsAttack", 1, "0"),
         fencingMainWeapons: this.createStateArray("fencingMainWeapons", 1, "0"),
         fencingAdditionalWeapons: this.createStateArray("fencingAdditionalWeapons", 1, "0"),
+        addMaxSpells: this.createStateArray("addMaxSpells", 1, "0"),
+        intCast: this.createStateArray("intCast", 1, "0"),
+        addBK: this.createStateArray("addBK", 1, "0"),
+        focusType: this.createStateArray("focusType", 1, "0"),// loader
     }
 
-    mageMDRBonus = this.list.mage.value[0] === 0 || this.list.mage.value[0] === "0" ? 0 :
+    mageMDRBonus = +this.list.mage.value[0] === 0 ? 0 :
         (this.list.mage.value[0] === 1 ? (+this.list.harks.value[4]) / 2 : +this.list.harks.value[4])
     ectoMaxHits = (+this.list.boneHits.value[0] !== 0 ? +this.list.boneHits.value[0] + 1 : 0) * 4 +
-        +this.list.harks.value[1] * 8 + +this.list.addMaxHits.value[0];
+        +this.list.harks.value[1] * 8 + +this.list.addMaxHits.value[0] + this.list.addGSI.value[0] * 8;
     ectoMaxMane = (+this.list.boneMane.value[0] !== 0 ? +this.list.boneMane.value[0] + 1 : 0) * 4 +
-        +this.mageMDRBonus * 8 + +this.list.addMaxMane.value[0];
+         +this.mageMDRBonus * 8 + +this.list.addMaxMane.value[0] + this.list.addMSI.value[0] * 8;
 
 
     detectSign = (val) => {
@@ -134,7 +138,7 @@ class CharlistData {
     SICreate = (val, add) =>
         val === 0 ? +add :
         val < 4 ? "1к4" + this.detectSign((val - 4) / 2 + +add):
-        val < 12 ? "1к" + val + (+add === 0 ? "" : "+" + +add) : "1к12+" + this.detectSign((val - 12) / 2 + +add)
+        val < 12 ? "1к" + val + (+add === 0 ? "" : "+" + +add) : "1к12" + this.detectSign((val - 12) / 2 + +add)
 
     boneCreate = (val) => val === 0 || val === "0" ? 0 :
                             val < 4 ? "1к4-" + (4 - val) / 2 :
@@ -184,6 +188,11 @@ class CharlistData {
         weaponsAdditionalAttack: "1к20+" + this.boneCreate(this.list.boneAdditionalWeapons.value[0]) + "+" +
             ((+this.list.fencingAdditionalWeapons.value[0] === 0 ? +this.list.harks.value[0] : +this.list.harks.value[2])
                 + +this.list.MODAdditionalWeapons.value[0] + +this.list.addMODWeaponsAttack.value[0]),
+        mageAttack: "1к20+" + ((+this.list.intCast.value[0] === 0 ? +this.list.harks.value[4] : +this.list.harks.value[3])
+                + +this.list.addBK.value[0] + +this.list.BKMainFocus.value[0] + +this.list.BKAdditionalFocus.value[0]),
+        maxSpells: (+this.list.mage.value[0] === 0 ? 0 : 3)
+            + +this.list.harks.value[3] * (this.list.vladenia.value.slice(10, 17).reduce((prev, cur) => +prev + +cur, 0))
+            + +this.list.addMaxSpells.value[0]
     }
 }
 
