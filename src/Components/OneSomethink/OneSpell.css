@@ -1,0 +1,14 @@
+.one-spell {
+    border: 2px solid var(--border-color-1);
+    margin: 5px;
+    border-radius: 5px;
+    width: 25rem;
+}
+
+.one-spell-header {
+    background-color: var(--border-color-1);
+}
+
+.one-spell-main > div {
+    border-top: 1px solid var(--border-color-1);
+}

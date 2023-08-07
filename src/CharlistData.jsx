@@ -150,6 +150,9 @@ class CharlistData {
 
 
 
+
+
+
     evalValueList = {
         maxHits: this.ectoMaxHits,
         maxMane: this.ectoMaxMane,

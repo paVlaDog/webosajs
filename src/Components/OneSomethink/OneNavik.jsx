@@ -1,8 +1,8 @@
 import React from 'react';
-import IncDecInput from "../UI/IncDecInput";
+import IncDecInput from "../../UI/IncDecInput";
 import "./OneNavik.css";
-import IncDecInputWithWords from "../UI/IncDecInputWithWords";
-import PopUpTip from "../UI/PopUpTip";
+import IncDecInputWithWords from "../../UI/IncDecInputWithWords";
+import PopUpTip from "../../UI/PopUpTip";
 
 const mapArray = new Map([
     [0, 'Отсутствие(+0)'],

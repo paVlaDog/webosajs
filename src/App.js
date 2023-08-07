@@ -10,12 +10,12 @@ import MainNav from "./Components/MainNav";
 import Aside from "./Components/Aside";
 
 
+
 function App() {
     const charListData = new CharlistData();
     const charList = charListData.list;
     const evalList = charListData.evalValueList;
     const [location, setLocation] = useState("stats");
-
 
   return (
       <div className="App">

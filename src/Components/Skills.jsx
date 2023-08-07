@@ -5,6 +5,9 @@ import Accordion from "../UI/Accordion";
 import StatsWithDoubleIncDecInput from "../UI/StatsWithDoubleIncDecInput";
 import HeaderWithTipBlock from "./HeaderWithTipBlock";
 import ButtonUnionTips from "../UI/ButtonUnionTips";
+import RaceSidebar from "./RaceSidebar";
+import SkillSidebar from "./SkillSidebar";
+import ClassSidebar from "./ClassSidebar";
 
 const Skills = ({charList, evalList}) => {
     const raceTip =
@@ -217,6 +220,7 @@ const Skills = ({charList, evalList}) => {
                         value = {charList.charRase.value[0]}
                         onChange={(e) => {charList.charRase.setValue(0)(e.target.value)}}
                         placeholder={"Видимо, человек"}/>
+                    <RaceSidebar/>
                 </div>
             }/>
             <Accordion title={"Класс"} content={
@@ -226,8 +230,8 @@ const Skills = ({charList, evalList}) => {
                         value = {charList.charClass.value[0]}
                         onChange={(e) => {charList.charClass.setValue(0)(e.target.value)}}
                         placeholder={"Видимо, воин"}/>
+                    <ClassSidebar/>
                 </div>
-
             }/>
             <Accordion title={"Дополнительные умения"} content={
                 <div>
@@ -246,6 +250,7 @@ const Skills = ({charList, evalList}) => {
                         value = {charList.preAddSkills.value[0]}
                         onChange={(e) => {charList.preAddSkills.setValue(0)(e.target.value)}}
                         placeholder={"Бесперспективняк"}/>
+                    <SkillSidebar/>
                 </div>
             }/>
             <Accordion title={"Манёвры"} content={

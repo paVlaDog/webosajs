@@ -1,21 +1,18 @@
 import React, {useState} from 'react';
-import OneHark from "./OneHark";
-import OneNavik from "./OneNavik";
+import OneHark from "./OneSomethink/OneHark";
+import OneNavik from "./OneSomethink/OneNavik";
 import "./Stats.css";
 import Accordion from "../UI/Accordion";
-import StatsWithSimpleInput from "./StatsWithSimpleInput";
 import IncDecInput from "../UI/IncDecInput";
 import IncDecInputWithWords from "../UI/IncDecInputWithWords";
 import SimpleInput from "../UI/SimpleInput";
-import StandartDropValueInput from "../UI/StandartDropValueInput";
-import DoubleIncDecInput from "../UI/DoubleIncDecInput";
 import StatsWithDoubleIncDecInput from "../UI/StatsWithDoubleIncDecInput";
 import PopUpTip from "../UI/PopUpTip";
-import SimpleButton from "../UI/SimpleButton";
 import HeaderWithTipBlock from "./HeaderWithTipBlock";
 import ButtonUnionTips from "../UI/ButtonUnionTips";
 import BoneIncDecInput from "../UI/BoneIncDecInput";
-import ButtonUnion from "../UI/ButtonUnion";
+import RaceSidebar from "./RaceSidebar";
+import SkillSidebar from "./SkillSidebar";
 
 const harksName = ["Сила", "Телосложение", "Ловкость", "Интеллект", "Мудрость", "Харизма"];
 
@@ -452,10 +449,8 @@ const Stats = ({charList, evalList}) => {
     ]
 
 
-    const [choose, setChoose] = useState("0");
     return (
         <div>
-
             <div className={"harks"}>
                 <HeaderWithTipBlock header={"Характеристики и навыки"} tip={harksTip}/>
 

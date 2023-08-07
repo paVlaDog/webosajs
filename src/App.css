@@ -12,7 +12,7 @@
 html {
   padding: 1rem;
   min-width: 600px;
-  max-width: 1280px;
+  max-width: 1920px;
   margin: 0 auto;
 }
 
@@ -22,6 +22,18 @@ input::placeholder {
 
 textarea::placeholder {
   color: goldenrod;
+}
+
+@media (max-width: 10000px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1280px) {
+  :root {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -98,6 +110,34 @@ footer {
   margin: 0;
   text-decoration: none;
 }
+
+.large-white-text {
+  color: var(--back-color-3);
+  font-size: larger;
+  margin: 0 2px;
+}
+
+.white-text {
+  color: var(--back-color-3);
+  margin: 0 2px;
+}
+
+.big-bold-red-text {
+  font-size: larger;
+  font-weight: bold;
+  padding: 0 5px;
+  color: darkred;
+  margin: 0 0 5px 0;
+}
+
+.bold-red-text {
+  font-weight: bold;
+  padding: 0 5px;
+  color: darkred;
+  margin: 0 0 5px 0;
+}
+
+
 
 
 

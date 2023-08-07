@@ -7,23 +7,10 @@
 .harks-and-naviks-block {
     border-bottom: 1px solid goldenrod;
     border-top: 1px solid goldenrod;
-    width: 400px;
+    width: 25rem;
 }
 
-.big-bold-red-text {
-    font-size: larger;
-    font-weight: bold;
-    padding: 0 5px;
-    color: darkred;
-    margin: 0 0 5px 0;
-}
 
-.bold-red-text {
-    font-weight: bold;
-    padding: 0 5px;
-    color: darkred;
-    margin: 0 0 5px 0;
-}
 
 .vladenia-block-information {
     border-bottom: 2px solid goldenrod;

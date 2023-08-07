@@ -14,6 +14,7 @@ import BoneIncDecInput from "../UI/BoneIncDecInput";
 import ButtonUnion from "../UI/ButtonUnion";
 import ButtonUnionTipsWithoutChoose from "../UI/ButtonUnionTipsWithoutChoose";
 import Checkbox from "./Checkbox";
+import usefulFuncs from "../UsefulFuncs";
 
 const weaponsModifiers = "* Парное - Вы тратите 1 действие на атаку вместо 2.\n" +
     "* Простое - Простым считается оружие, не являющееся парным или двуручным.\n" +
@@ -55,10 +56,6 @@ const preWeaponsText = [
     "Стандартный урон простого оружия: (Новичок: 1к4+МОД | Ученик: 1к8+МОД | Ветеран: 1к12+МОД | Мастер: 2к8+МОД)\n",
     "Стандартный урон двуручного оружия: (Новичок: 1к8+МОД | Ученик: 1к12+МОД | Ветеран: 2к8+МОД | Мастер: 1к20+МОД)\n"
 ];
-
-const mapToDiv = (str) => {
-    return str.split("\n").map((el) => {return <div className={"bold-red-text"}>{el}</div>})
-}
 
 const namesPairMeleeWeapons = [
     ["Дубинка (Урон:-, парное, дробящее) ", 5 ],
@@ -633,7 +630,7 @@ const Equip = ({charList, evalList}) => {
                         <div>
                             <Accordion title={"Свойства оружий"} content={
                                 <div>
-                                    {mapToDiv(weaponsModifiers)}
+                                    {usefulFuncs.mapToDiv(weaponsModifiers)}
                                 </div>
                             }/>
                             <Accordion title={"Парное оружие ближнего боя"} content={
@@ -682,7 +679,7 @@ const Equip = ({charList, evalList}) => {
                         <div>
                             <Accordion title={"Типы доспехов"} content={
                                 <div>
-                                    {mapToDiv(armorDescription)}
+                                    {usefulFuncs.mapToDiv(armorDescription)}
                                 </div>
                             }/>
                             <Accordion title={"Лёгкие доспехи"} content={
@@ -711,7 +708,7 @@ const Equip = ({charList, evalList}) => {
                         <div>
                             <Accordion title={"Правила фокусировок и амулетов"} content={
                                 <div>
-                                    {mapToDiv(mageDescription)}
+                                    {usefulFuncs.mapToDiv(mageDescription)}
                                 </div>
                             }/>
                             <Accordion title={"Магическая фокусировка"} content={

@@ -5,6 +5,7 @@ import HeaderWithTipBlock from "./HeaderWithTipBlock";
 import ButtonUnionTips from "../UI/ButtonUnionTips";
 import StatsWithDoubleIncDecInput from "../UI/StatsWithDoubleIncDecInput";
 import Checkbox from "./Checkbox";
+import SpellSidebar from "./SpellSidebar";
 
 const mapArray = new Map([
     [0, 'Не заклинатель'],
@@ -101,6 +102,7 @@ const Spells = ({charList, evalList}) => {
                 value = {charList.spells.value[0]}
                 onChange={(e) => {charList.spells.setValue(0)(e.target.value)}}
                 placeholder={"Грязный магл!"}/>
+            <SpellSidebar/>
         </div>
     );
 };

@@ -1,0 +1,14 @@
+.one-skill {
+    border: 2px solid var(--border-color-1);
+    margin: 5px;
+    border-radius: 5px;
+    /*width: 45%;*/
+}
+
+.one-skill-header {
+    background-color: var(--border-color-1);
+}
+
+.one-skill-main > div {
+    border-top: 1px solid var(--border-color-1);
+}

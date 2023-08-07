@@ -1,0 +1,14 @@
+.one-wound {
+    border: 2px solid var(--border-color-1);
+    margin: 5px;
+    border-radius: 5px;
+    /*width: 45%;*/
+}
+
+.one-wound-header {
+    background-color: var(--border-color-1);
+}
+
+.one-wound-main > div {
+    border-top: 1px solid var(--border-color-1);
+}

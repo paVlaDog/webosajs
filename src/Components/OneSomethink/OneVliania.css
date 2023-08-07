@@ -1,0 +1,26 @@
+.one-vliania {
+    border: 2px solid var(--border-color-1);
+    margin: 5px;
+    border-radius: 5px;
+    /*width: 45%;*/
+}
+
+.one-vliania-header {
+    background-color: var(--border-color-1);
+}
+
+.one-vliania-main > div {
+    border-top: 3px double var(--border-color-1);
+    margin: 0;
+}
+
+.one-vliania-effect-block {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+}
+
+.one-vliania-bound-effect {
+    border-right: 3px double var(--border-color-1);
+    margin: 0;
+}

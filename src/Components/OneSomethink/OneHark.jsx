@@ -1,7 +1,7 @@
 import React from 'react';
-import IncDecInput from "../UI/IncDecInput";
+import IncDecInput from "../../UI/IncDecInput";
 import "./OneHark.css"
-import PopUpTip from "../UI/PopUpTip";
+import PopUpTip from "../../UI/PopUpTip";
 
 const OneHark = ({name, val, setVal, tipText}) => {
     return (
