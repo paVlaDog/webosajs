@@ -4,8 +4,29 @@
     border-bottom: 1px solid var(--border-color-1);
 }
 
-.into-sidebar {
+.sidebar-main {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
 }
+
+.sidebar-header {
+    text-align: center;
+}
+
+.sidebar-header > * {
+    display: inline;
+}
+
+.sidebar-find {
+    text-align: center;
+}
+
+.sidebar-find > * {
+    display: inline;
+}
+
+.sidebar-div-with-button {
+    text-align: center;
+}
+

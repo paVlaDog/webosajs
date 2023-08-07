@@ -17,11 +17,6 @@ const vliania = <OneVliania style={{width: "25rem"}} name={"Бегите, глу
                             effect2={"страх(спас 25), 5 ходов"}/>
 const wound = <OneWound style={{width: "25rem"}} name={"Нога, больно!"} weight={"Легкое"} effect={"-1 МС, -5 к максимуму хитов"}/>
 
-
-// "- **Бегите, глупцы!** - 4 противника(не из паствы), проверка выступления, 2 действия, 1р/бой\n" +
-// "\t\t- (15+ - страх(спас 15), 3 хода)\n" +
-// "\t\t- (25+ - страх(спас 25), 5 ходов)"
-
 const SkillSidebar = () => {
     return (
         <Sidebar buttonText={"Выбрать скиллы"} children={[skill, maneuver, ability, vliania, wound]}/>);

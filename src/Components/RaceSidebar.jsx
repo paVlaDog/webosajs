@@ -20,7 +20,7 @@ const el =  <OneRace header={"Ракшасса"} description={
 
 const RaceSidebar = () => {
     return (
-        <Sidebar buttonText={"Выбрать расу"} children={[el, el, el]}/>);
+        <Sidebar buttonText={"Выбрать расу"} children={[el, el, el]} header={"Выбор расы"}/>);
 };
 
 export default RaceSidebar;
