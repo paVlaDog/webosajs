@@ -8,14 +8,16 @@ import Spells from "./Components/Spells";
 import History from "./Components/History";
 import MainNav from "./Components/MainNav";
 import Aside from "./Components/Aside";
-
-
+import getSkillsSpellsRaceClass from "./parseAll.js"
 
 function App() {
     const charListData = new CharlistData();
     const charList = charListData.list;
     const evalList = charListData.evalValueList;
+    const SSRCList = charListData.SSRCList;
     const [location, setLocation] = useState("stats");
+    const [parseAllSkills, parseAllSpells, parseAllRace, parseAllClass] = getSkillsSpellsRaceClass()
+    useEffect(() => {parseAllSkills(SSRCList.skills.setValue).then(parseAllRace(SSRCList.races.setValue))}, [])
 
   return (
       <div className="App">
@@ -33,8 +35,8 @@ function App() {
             <div className={"main-information-block"}>
               {location === "stats" && <Stats charList={charList} evalList={evalList}/>}
               {location === "equip" && <Equip charList={charList} evalList={evalList}/>}
-              {location === "skills" && <Skills charList={charList} evalList={evalList}/>}
-              {location === "spells" && <Spells charList={charList} evalList={evalList}/>}
+              {location === "skills" && <Skills charList={charList} evalList={evalList} SSRCList={SSRCList}/>}
+              {location === "spells" && <Spells charList={charList} evalList={evalList} SSRCList={SSRCList}/>}
               {location === "history" && <History charList={charList} evalList={evalList}/>}
             </div>
           </main>
@@ -43,5 +45,6 @@ function App() {
       </div>
   );
 }
+
 
 export default App;

@@ -1,4 +1,5 @@
 import {useState} from "react";
+import getSkillsSpellsRaceClass from "./parseAll";
 
 const startManeuvers = "- *Отход*(1) - Тратит 1 действие, все перемещения до конца хода не провоцируют атак, вы получаете -1МС на этот ход.\n" +
     "- *Засада*(1) - Тратит 2 действия. В следующий раз, когда вы попробуете напасть на противника, вы проходите соревнование Незаметность против Бдительности, при успехе противник считается Захваченным врасплох.\n" +
@@ -196,6 +197,21 @@ class CharlistData {
         maxSpells: (+this.list.mage.value[0] === 0 ? 0 : 3)
             + +this.list.harks.value[3] * (this.list.vladenia.value.slice(10, 17).reduce((prev, cur) => +prev + +cur, 0))
             + +this.list.addMaxSpells.value[0]
+    }
+
+    createSSRC = (startValue) => {
+        const state = useState(startValue);
+        return {
+            value: state[0],
+            setValue: state[1]
+        }
+    }
+
+    SSRCList = {
+        skills: this.createSSRC("Loading..."),
+        spells: this.createSSRC("Loading..."),
+        allClass: this.createSSRC("Loading..."),
+        races: this.createSSRC("Loading..."),
     }
 }
 

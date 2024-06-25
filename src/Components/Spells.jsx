@@ -86,7 +86,7 @@ const spellsTip =
                          ]
                      }/>
 
-const Spells = ({charList, evalList}) => {
+const Spells = ({charList, evalList, SSRCList}) => {
     return (
         <div>
             <HeaderWithTipBlock header={"Заклинания"} tip={spellsTip}/>
@@ -102,7 +102,7 @@ const Spells = ({charList, evalList}) => {
                 value = {charList.spells.value[0]}
                 onChange={(e) => {charList.spells.setValue(0)(e.target.value)}}
                 placeholder={"Грязный магл!"}/>
-            <SpellSidebar/>
+            <SpellSidebar SSRCList={SSRCList}/>
         </div>
     );
 };

@@ -9,9 +9,10 @@ const skill3 = <OneSkill name={"Тёмные души"} cost={2} needs={""} effe
 
 const el =  <OneClass name={"Ловкач"} description={"Наделенные невероятной ловкостью от природы, Ловкачи пользуются ей без зазрения совести, бла-бла-бла"}
                      skills={[skill1, skill2, skill3]}/>
-const ClassSidebar = () => {
+
+const ClassSidebar = ({SSRCList}) => {
     return (
-        <Sidebar buttonText={"Выбрать класс"} children={[el, el, el]}/>);
+        <Sidebar buttonText={"Выбрать класс"} children={SSRCList.allClass.value}/>);
 };
 
 export default ClassSidebar;

@@ -2,12 +2,12 @@ import React from 'react';
 import "./OneRace.css"
 import usefulFuncs from "../../UsefulFuncs";
 
-const OneRace = ({header, description, stats, skills}) => {
+const OneRace = ({name, description, stats, skills}) => {
     return (
         <div className={"one-race"}>
             <div className={"one-race-header"}>
                 <h3 className={"white-text"}>
-                    {header}
+                    {name}
                 </h3>
             </div>
             <div className={"one-race-main"}>

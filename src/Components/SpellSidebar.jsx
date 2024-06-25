@@ -9,9 +9,9 @@ const el1 =  <OneSpell name={"Охлаждение"} level={"Ученик"} rari
 const el2 =  <OneSpell name={"Твёрдый лёд"} level={"Адепт"} rarity={"Редкое"} type={"Модификатор"}
                       effect={<SpellsModificator bonusCost={4} bonusDifficulty={5} zagovors={"Охлаждение"} effect={"Теперь заклинания хватит, чтобы охладить литр магмы до комнатной температуры или создать из воды простенький меч. Получившийся лёд достаточно твёрдый, чтобы сражаться и достаточно острый, чтобы иметь всего -1 урон в сравнении с оригиналом. Но, крайне быстро тупится и тает."}/>} />
 
-const SpellSidebar = () => {
+const SpellSidebar = ({SSRCList}) => {
     return (
-        <Sidebar buttonText={"Выбрать заклинания"} children={[el1, el2, el1, el2]}/>);
+        <Sidebar buttonText={"Выбрать заклинания"} children={SSRCList.spells.value}/>);
 };
 
 export default SpellSidebar;

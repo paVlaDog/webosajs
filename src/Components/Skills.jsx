@@ -9,7 +9,7 @@ import RaceSidebar from "./RaceSidebar";
 import SkillSidebar from "./SkillSidebar";
 import ClassSidebar from "./ClassSidebar";
 
-const Skills = ({charList, evalList}) => {
+const Skills = ({charList, evalList, SSRCList}) => {
     const raceTip =
         <ButtonUnionTips count={2}
                          namesArray={["Раса", "Выбор расы"]}
@@ -220,7 +220,7 @@ const Skills = ({charList, evalList}) => {
                         value = {charList.charRase.value[0]}
                         onChange={(e) => {charList.charRase.setValue(0)(e.target.value)}}
                         placeholder={"Видимо, человек"}/>
-                    <RaceSidebar/>
+                    <RaceSidebar SSRCList={SSRCList}/>
                 </div>
             }/>
             <Accordion title={"Класс"} content={
@@ -230,7 +230,7 @@ const Skills = ({charList, evalList}) => {
                         value = {charList.charClass.value[0]}
                         onChange={(e) => {charList.charClass.setValue(0)(e.target.value)}}
                         placeholder={"Видимо, воин"}/>
-                    <ClassSidebar/>
+                    <ClassSidebar SSRCList={SSRCList}/>
                 </div>
             }/>
             <Accordion title={"Дополнительные умения"} content={
@@ -250,7 +250,7 @@ const Skills = ({charList, evalList}) => {
                         value = {charList.preAddSkills.value[0]}
                         onChange={(e) => {charList.preAddSkills.setValue(0)(e.target.value)}}
                         placeholder={"Бесперспективняк"}/>
-                    <SkillSidebar/>
+                    <SkillSidebar SSRCList={SSRCList}/>
                 </div>
             }/>
             <Accordion title={"Манёвры"} content={
